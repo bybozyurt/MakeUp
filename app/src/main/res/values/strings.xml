@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="products">Products</string>
     <string name="favorites">Favorites</string>
+    <string name="gluten_free">Gluten Free</string>
+    <string name="ewg">Ewg</string>
+    <string name="vegan">Vegan</string>
 </resources>

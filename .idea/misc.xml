@@ -4,10 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_blush_makeup_svgrepo_com.xml" value="0.30185185185185187" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_ewg_verified.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_filter.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_gluten_free.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_leaf.xml" value="0.3828125" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_makeup.xml" value="0.27314814814814814" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_natural.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_sad.xml" value="0.3828125" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_star.xml" value="0.27314814814814814" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/layout/fragment_favorite_products.xml" value="0.28489583333333335" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/layout/fragment_products.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/layout/placeholder_row_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/layout/products_row_layout.xml" value="0.5" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
