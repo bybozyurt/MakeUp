@@ -8,26 +8,36 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooder.util.extensions.toast
 import com.example.fooder.util.observeOnce
+import com.example.makeup.R
 import com.example.makeup.adapters.ProductsAdapter
 import com.example.makeup.bindingadapters.ProductsBinding.Companion.handleReadDataErrors
 import com.example.makeup.databinding.FragmentProductsBinding
+import com.example.makeup.util.NetworkListener
 import com.example.makeup.util.NetworkResult
 import com.example.makeup.viewmodels.MainViewModel
 import com.example.makeup.viewmodels.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class ProductsFragment : Fragment() {
+
+    private val args by navArgs<ProductsFragmentArgs>()
 
     private var _binding: FragmentProductsBinding? = null
     private val binding get() = _binding!!
     private lateinit var mainViewModel: MainViewModel
     private lateinit var productsViewModel: ProductsViewModel
     private val mAdapter by lazy { ProductsAdapter() }
+    private lateinit var networkListener: NetworkListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +54,10 @@ class ProductsFragment : Fragment() {
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         setupRecyclerView()
         readDatabase()
+        readBackOnline()
+        checkNetworkStatus()
+        navigateBottomSheet()
+
 
         mainViewModel.pairMediatorLiveData.observe(viewLifecycleOwner, { (productsResponse, readProducts) ->
             handleReadDataErrors(binding.errorImageView, productsResponse, readProducts)
@@ -65,7 +79,7 @@ class ProductsFragment : Fragment() {
     private fun readDatabase() {
         lifecycleScope.launch {
             mainViewModel.readProducts.observeOnce(viewLifecycleOwner, { database ->
-                if (database.isNotEmpty()) {
+                if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     Log.d("RecipesFragment", "readDatabase called!")
                     mAdapter.setData(database[0].products)
                     hideShimmerEffect()
@@ -85,6 +99,7 @@ class ProductsFragment : Fragment() {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
                     response.data?.let { mAdapter.setData(it) }
+                    productsViewModel.saveBrandAndCategory()
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
@@ -107,6 +122,37 @@ class ProductsFragment : Fragment() {
                 }
             })
         }
+    }
+
+    private fun navigateBottomSheet() {
+        binding.floatingActionButton.setOnClickListener {
+            if (productsViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_productsFragment_to_productBottomSheet)
+            } else {
+                productsViewModel.showNetworkStatus()
+            }
+
+        }
+
+    }
+
+    private fun checkNetworkStatus() {
+        lifecycleScope.launchWhenStarted {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect{ status ->
+                    Log.e("NetworkListener",status.toString())
+                    productsViewModel.networkStatus = status
+                    productsViewModel.showNetworkStatus()
+                    readDatabase()
+                }
+        }
+    }
+
+    private fun readBackOnline() {
+        productsViewModel.readBackOnline.observe(viewLifecycleOwner, {
+            productsViewModel.backOnline = it
+        })
     }
 
     private fun showShimmerEffect() {

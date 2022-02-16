@@ -8,4 +8,27 @@
     <string name="ewg">Ewg</string>
     <string name="vegan">Vegan</string>
     <string name="natural">Natural</string>
+    <string name="brand">Brand</string>
+    <string name="category">Category</string>
+    <string name="dior">Dior</string>
+    <string name="l_oreal">L\'oreal</string>
+    <string name="lip_stick">Lipstick</string>
+    <string name="nail_polish">Nail Polish</string>
+    <string name="eye_shadow">Eyeshadow</string>
+    <string name="mascara">Mascara</string>
+    <string name="foundation">Foundation</string>
+    <string name="eyeliner">Eyeliner</string>
+    <string name="blush">Blush</string>
+    <string name="eyebrow">Eyebrow</string>
+    <string name="bronzer">Bronzer</string>
+    <string name="lip_liner">Lip Liner</string>
+    <string name="milani">Milani</string>
+    <string name="colorpop">Colorpop</string>
+    <string name="covergirl">Covergirl</string>
+    <string name="clinique">Clinique</string>
+    <string name="fenty">Fenty</string>
+    <string name="benefit">Benefit</string>
+    <string name="smashbox">Smashbox</string>
+    <string name="maybelline">Maybelline</string>
+    <string name="apply">Apply</string>
 </resources>

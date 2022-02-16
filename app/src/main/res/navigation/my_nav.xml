@@ -9,10 +9,30 @@
         android:id="@+id/productsFragment"
         android:name="com.example.makeup.ui.fragments.products.ProductsFragment"
         android:label="Products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_productBottomSheet"
+            app:destination="@id/productBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteProductsFragment"
         android:name="com.example.makeup.ui.fragments.favorites.FavoriteProductsFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorite_products" />
+    <dialog
+        android:id="@+id/productBottomSheet"
+        android:name="com.example.makeup.ui.fragments.products.bottomsheet.ProductBottomSheet"
+        android:label="fragment_product_bottom_sheet"
+        tools:layout="@layout/fragment_product_bottom_sheet" >
+        <action
+            android:id="@+id/action_productBottomSheet_to_productsFragment"
+            app:destination="@id/productsFragment"
+            app:popUpTo="@id/productsFragment"
+            app:popUpToInclusive="true"
+            />
+    </dialog>
 </navigation>
