@@ -4,14 +4,14 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.makeup.data.Repository
+import com.example.makeup.data.database.ProductsEntity
 import com.example.makeup.models.Products
-import com.example.makeup.models.ProductsItem
 import com.example.makeup.util.NetworkResult
+import com.example.makeup.util.PairMediatorLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
@@ -23,7 +23,18 @@ class MainViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
+    val readProducts: LiveData<List<ProductsEntity>> = repository.local.readDatabase().asLiveData()
+    val readProducts2 : LiveData<List<ProductsEntity>> = readProducts
+
+    private fun insertProducts(productsEntity: ProductsEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertRecipes(productsEntity)
+        }
+
     var productsResponse: MutableLiveData<NetworkResult<Products>> = MutableLiveData()
+    var productsResponse2: MutableLiveData<NetworkResult<Products>> = productsResponse
+
+    val pairMediatorLiveData = PairMediatorLiveData(productsResponse2, readProducts2)
 
     fun getProducts(queries: Map<String, String>) = viewModelScope.launch {
         getProductsSafeCall(queries)
@@ -35,6 +46,12 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.remote.getProducts(queries)
                 productsResponse.value = handleProductsResponse(response)
+
+                val makeUp = productsResponse.value!!.data
+                //room
+                makeUp?.let {
+                    offlineCacheRecipes(makeUp)
+                }
             } catch (e: Exception) {
                 productsResponse.value = NetworkResult.Error("Products not found.")
             }
@@ -43,12 +60,18 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    //room
+    private fun offlineCacheRecipes(foodRecipe: Products) {
+        val productsEntity = ProductsEntity(foodRecipe)
+        insertProducts(productsEntity)
+    }
+
     private fun handleProductsResponse(response: Response<Products>): NetworkResult<Products>? {
         when {
             response.message().toString().contains("timeout") -> {
                 return NetworkResult.Error("Timeout")
             }
-            response.body()!!.results.isNullOrEmpty() -> {
+            response.body()!!.isNullOrEmpty() -> {
                 return NetworkResult.Error("Products Not Found")
             }
             response.isSuccessful -> {

@@ -15,7 +15,6 @@ class ProductsRowBinding {
     companion object{
 
 
-
         fun loadImageFromUrl(imageView: ImageView, imageUrl: String){
             imageView.load(imageUrl){
                 crossfade(600)

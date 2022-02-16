@@ -7,15 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooder.util.extensions.toast
+import com.example.fooder.util.observeOnce
 import com.example.makeup.R
 import com.example.makeup.adapters.ProductsAdapter
+import com.example.makeup.bindingadapters.ProductsBinding.Companion.handleReadDataErrors
 import com.example.makeup.databinding.FragmentProductsBinding
 import com.example.makeup.util.NetworkResult
 import com.example.makeup.viewmodels.MainViewModel
 import com.example.makeup.viewmodels.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ProductsFragment : Fragment() {
@@ -40,9 +44,13 @@ class ProductsFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         setupRecyclerView()
-        requestApiData()
+        readDatabase()
 
+        mainViewModel.pairMediatorLiveData.observe(viewLifecycleOwner, { (productsResponse, readProducts) ->
+            handleReadDataErrors(binding.errorImageView, productsResponse, readProducts)
+            handleReadDataErrors(binding.errorTextView, productsResponse, readProducts)
 
+        })
 
         return binding.root
     }
@@ -52,6 +60,23 @@ class ProductsFragment : Fragment() {
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
     }
+
+
+    //bottomSheet args
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            mainViewModel.readProducts.observeOnce(viewLifecycleOwner, { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "readDatabase called!")
+                    mAdapter.setData(database[0].products)
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
+                }
+            })
+        }
+    }
+
 
     private fun requestApiData() {
         Log.e("ahmet", "data from api")
@@ -64,6 +89,7 @@ class ProductsFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
+                    loadDataFromCache()
                     toast(requireContext(), response.message.toString())
                 }
                 is NetworkResult.Loading -> {
@@ -72,6 +98,16 @@ class ProductsFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun loadDataFromCache() {
+        lifecycleScope.launch {
+            mainViewModel.readProducts.observe(viewLifecycleOwner, {database->
+                if (database.isNotEmpty()) {
+                    mAdapter.setData(database[0].products)
+                }
+            })
+        }
     }
 
     private fun showShimmerEffect() {
