@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.example.makeup.ProductsFragment"
+        android:name="com.example.makeup.ui.fragments.ProductsFragment"
         android:label="Products"
         tools:layout="@layout/fragment_products" />
     <fragment
         android:id="@+id/favoriteProductsFragment"
-        android:name="com.example.makeup.FavoriteProductsFragment"
+        android:name="com.example.makeup.ui.fragments.FavoriteProductsFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorite_products" />
 </navigation>

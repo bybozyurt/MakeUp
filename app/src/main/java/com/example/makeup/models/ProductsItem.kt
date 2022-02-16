@@ -5,41 +5,31 @@ import com.google.gson.annotations.SerializedName
 
 data class ProductsItem(
     @SerializedName("api_featured_image")
-    val apiFeaturedİmage: String,
+    val apiFeaturedİmage: String?,
     @SerializedName("brand")
-    val brand: String,
+    val brand: String?,
     @SerializedName("category")
-    val category: String,
-    @SerializedName("created_at")
-    val createdAt: String,
+    val category: String?,
     @SerializedName("currency")
-    val currency: String,
+    val currency: String?,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("id")
     val id: Int,
     @SerializedName("image_link")
     val imageLink: String,
     @SerializedName("name")
-    val name: String,
-    @SerializedName("price")
-    val price: String,
-    @SerializedName("price_sign")
-    val priceSign: String,
+    val name: String?,
     @SerializedName("product_api_url")
-    val productApiUrl: String,
+    val productApiUrl: String?,
     @SerializedName("product_colors")
-    val productColors: List<ProductColor>,
+    val productColors: List<ProductColor>?,
     @SerializedName("product_link")
-    val productLink: String,
+    val productLink: String?,
     @SerializedName("product_type")
-    val productType: String,
-    @SerializedName("rating")
-    val rating: Double,
+    val productType: String?,
     @SerializedName("tag_list")
-    val tagList: List<String>,
-    @SerializedName("updated_at")
-    val updatedAt: String,
+    val tagList: List<String>?,
     @SerializedName("website_link")
-    val websiteLink: String
+    val websiteLink: String?
 )

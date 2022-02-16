@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/lightGray"
-    tools:context=".ProductsFragment">
+    tools:context=".ui.fragments.ProductsFragment">
 
     <com.todkars.shimmer.ShimmerRecyclerView
         android:id="@+id/recyclerview"
