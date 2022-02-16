@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context=".ui.fragments.recipes.bottomsheet.RecipesBottomSheet">
+    tools:context=".ui.fragments.products.bottomsheet.ProductBottomSheet">
 
 
     <TextView
