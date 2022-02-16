@@ -1,4 +1,4 @@
-package com.example.makeup.ui.fragments
+package com.example.makeup.ui.fragments.products
 
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fooder.util.extensions.toast
 import com.example.fooder.util.observeOnce
-import com.example.makeup.R
 import com.example.makeup.adapters.ProductsAdapter
 import com.example.makeup.bindingadapters.ProductsBinding.Companion.handleReadDataErrors
 import com.example.makeup.databinding.FragmentProductsBinding

@@ -1,4 +1,4 @@
-package com.example.makeup.ui.fragments
+package com.example.makeup.ui.fragments.favorites
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
