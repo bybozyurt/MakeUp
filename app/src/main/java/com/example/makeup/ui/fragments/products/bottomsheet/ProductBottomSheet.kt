@@ -67,12 +67,12 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
 
     private fun readBrandAndCategoryObserve(){
 
-        productViewModel.readBrandAndCategory.asLiveData().observe(viewLifecycleOwner, { value ->
+        productViewModel.readBrandAndCategory.asLiveData().observe(viewLifecycleOwner) { value ->
             brandChip = value.selectedBrand
             categoryChip = value.selectedCategory
             updateChip(value.selectedBrandId, binding.brandChipGroup)
             updateChip(value.selectedCategoryId, binding.categoryChipGroup)
-        })
+        }
     }
 
     private fun brandChipGroupListener() {
