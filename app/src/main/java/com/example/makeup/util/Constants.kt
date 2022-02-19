@@ -8,6 +8,7 @@ class Constants {
         //API QUERY
         const val QUERY_BRAND = "brand"
         const val QUERY_PRODUCT_TYPE = "product_type"
+        const val QUERY_TAGS= "product_tags"
 
         // ROOM Database
         const val DATABASE_NAME = "products_database"
@@ -23,6 +24,7 @@ class Constants {
         const val PREFERENCES_CATEGORY = "category"
         const val PREFERENCES_CATEGORY_ID = "categoryId"
         const val PREFERENCES_BACK_ONLINE = "backOnline"
+
 
     }
 

@@ -31,4 +31,6 @@
     <string name="smashbox">Smashbox</string>
     <string name="maybelline">Maybelline</string>
     <string name="apply">Apply</string>
+    <string name="search_by_tag">Search By Tag</string>
+    <string name="organic">Organic</string>
 </resources>

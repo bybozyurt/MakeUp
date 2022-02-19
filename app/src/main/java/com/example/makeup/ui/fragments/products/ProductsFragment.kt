@@ -2,10 +2,10 @@ package com.example.makeup.ui.fragments.products
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class ProductsFragment : Fragment() {
+class ProductsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private val args by navArgs<ProductsFragmentArgs>()
 
@@ -52,6 +52,7 @@ class ProductsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         setupRecyclerView()
         readDatabase()
         readBackOnline()
@@ -162,6 +163,55 @@ class ProductsFragment : Fragment() {
     private fun hideShimmerEffect() {
         binding.recyclerview.hideShimmer()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.products_menu, menu)
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.queryHint = resources.getString(R.string.search_by_tag)
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        query?.let {
+            searchApiData(query)
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        return true
+    }
+
+
+    private fun searchApiData(searchQuery: String) {
+        showShimmerEffect()
+        mainViewModel.getSearchProducts(productsViewModel.applySearchQuery(searchQuery))
+        mainViewModel.searchedProductsResponse.observe(viewLifecycleOwner) { response ->
+            when(response){
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    response.data?.let {
+                        mAdapter.setData(it)
+                    }
+                }
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    loadDataFromCache()
+                    toast(requireContext(), response.message.toString())
+                }
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+                }
+
+            }
+
+        }
+
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

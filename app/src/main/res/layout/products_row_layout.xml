@@ -89,6 +89,44 @@
                 app:layout_constraintStart_toStartOf="@+id/description_textView"
                 app:layout_constraintTop_toBottomOf="@+id/leaf_imageView" />
 
+            <ImageView
+                android:id="@+id/natural_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/natural_textView"
+                app:layout_constraintStart_toStartOf="@+id/natural_textView"
+                app:layout_constraintTop_toTopOf="@+id/leaf_imageView"
+                app:srcCompat="@drawable/ic_natural" />
+
+            <TextView
+                android:id="@+id/natural_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:text="@string/natural"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/leaf_textView"
+                app:layout_constraintTop_toBottomOf="@+id/natural_imageView" />
+
+            <ImageView
+                android:id="@+id/organic_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/organic_textView"
+                app:layout_constraintStart_toStartOf="@+id/organic_textView"
+                app:layout_constraintTop_toTopOf="@+id/natural_imageView"
+                app:srcCompat="@drawable/ic_gluten_free" />
+
+            <TextView
+                android:id="@+id/organic_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/organic"
+                android:textAlignment="center"
+                app:layout_constraintStart_toEndOf="@+id/natural_textView"
+                app:layout_constraintTop_toBottomOf="@+id/organic_imageView" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

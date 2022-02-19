@@ -13,4 +13,9 @@ interface ProductsApi {
         @QueryMap queries: Map<String, String>
     ): Response<Products>
 
+    @GET("/api/v1/products.json")
+    suspend fun searchProducts(
+        @QueryMap searchQuery: Map<String, String>
+    ): Response<Products>
+
 }

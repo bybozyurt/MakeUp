@@ -11,6 +11,7 @@ import com.example.makeup.util.Constants.Companion.DEFAULT_BRAND
 import com.example.makeup.util.Constants.Companion.DEFAULT_CATEGORY
 import com.example.makeup.util.Constants.Companion.QUERY_BRAND
 import com.example.makeup.util.Constants.Companion.QUERY_PRODUCT_TYPE
+import com.example.makeup.util.Constants.Companion.QUERY_TAGS
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -69,6 +70,17 @@ class ProductsViewModel @Inject constructor(
         }
 
         return queries
+    }
+
+
+    fun applySearchQuery(searchQuery: String): HashMap<String, String>{
+        val queries: HashMap<String, String> = HashMap()
+
+        queries[QUERY_TAGS] = searchQuery
+
+        return queries
+
+
     }
 
 

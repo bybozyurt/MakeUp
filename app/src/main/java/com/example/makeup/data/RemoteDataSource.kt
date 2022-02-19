@@ -11,4 +11,9 @@ class RemoteDataSource @Inject constructor(private val productsApi: ProductsApi)
     suspend fun getProducts(queries: Map<String, String>): Response<Products> {
         return productsApi.getProducts(queries)
     }
+
+    suspend fun searchProducts(searchQuery: Map<String, String>): Response<Products> {
+        return productsApi.searchProducts(searchQuery)
+    }
+
 }

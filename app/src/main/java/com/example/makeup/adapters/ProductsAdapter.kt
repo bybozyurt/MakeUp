@@ -44,10 +44,12 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
                 parseHtml(descriptionTextView, description)
                 loadImageFromUrl(productImageView, imageLink)
                 nameTextView.text = name
-//                applyColor(leafImageView, tagList!!.contains("Vegan"))
-//                applyColor(leafTextView, tagList.contains("Vegan"))
-//                applyColor(naturalImageView, tagList.contains("Natural"))
-//                applyColor(naturalTextView, tagList.contains("Natural"))
+                applyColor(leafImageView, tagList!!.contains("Vegan"))
+                applyColor(leafTextView, tagList.contains("Vegan"))
+                applyColor(naturalImageView, tagList.contains("Natural"))
+                applyColor(naturalTextView, tagList.contains("Natural"))
+                applyColor(organicImageView, tagList.contains("Organic"))
+                applyColor(organicTextView, tagList.contains("Organic"))
             }
         }
     }
@@ -62,6 +64,30 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
         val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
         products = newData
         diffUtilResult.dispatchUpdatesTo(this)
+    }
+
+    private fun applyColor(view: View, tag: Boolean){
+        if (tag){
+            when(view){
+                is TextView -> {
+                    view.setTextColor(
+                        ContextCompat.getColor(
+                            view.context,
+                            R.color.green
+                        )
+                    )
+
+                }
+                is ImageView -> {
+                    view.setColorFilter(
+                        ContextCompat.getColor(
+                            view.context,
+                            R.color.green
+                        )
+                    )
+                }
+            }
+        }
     }
 
 
