@@ -45,7 +45,7 @@
                 android:layout_marginEnd="12dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/autour_one"
-                android:maxLines="2"
+                android:maxLines="3"
                 android:text="Lorem Ipsum"
                 android:textColor="@color/darker"
                 android:textSize="20sp"
@@ -69,64 +69,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_textView" />
 
             <ImageView
-                android:id="@+id/ewg_imageView"
+                android:id="@+id/leaf_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="36dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/ewg_textView"
-                app:layout_constraintStart_toStartOf="@+id/ewg_textView"
-                app:layout_constraintTop_toBottomOf="@+id/description_textView"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/ic_ewg_verified" />
-
-            <TextView
-                android:id="@+id/ewg_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ewg"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="@+id/description_textView"
-                app:layout_constraintTop_toBottomOf="@+id/ewg_imageView" />
-
-            <ImageView
-                android:id="@+id/gluten_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/gluten_textView"
-                app:layout_constraintStart_toStartOf="@+id/gluten_textView"
-                app:layout_constraintTop_toTopOf="@+id/ewg_imageView"
-                app:srcCompat="@drawable/ic_natural" />
-
-            <TextView
-                android:id="@+id/gluten_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Natural"
-                android:textAlignment="center"
-                app:layout_constraintStart_toEndOf="@+id/ewg_textView"
-                app:layout_constraintTop_toBottomOf="@+id/gluten_imageView" />
-
-            <ImageView
-                android:id="@+id/leaf_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@+id/leaf_textView"
                 app:layout_constraintStart_toStartOf="@+id/leaf_textView"
-                app:layout_constraintTop_toTopOf="@+id/gluten_imageView"
-                app:srcCompat="@drawable/ic_leaf"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/description_textView"
+                app:srcCompat="@drawable/ic_leaf" />
 
             <TextView
                 android:id="@+id/leaf_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
                 android:text="@string/vegan"
                 android:textAlignment="center"
-                app:layout_constraintStart_toEndOf="@+id/gluten_textView"
+                app:layout_constraintStart_toStartOf="@+id/description_textView"
                 app:layout_constraintTop_toBottomOf="@+id/leaf_imageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

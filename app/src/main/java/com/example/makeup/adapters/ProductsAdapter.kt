@@ -1,11 +1,14 @@
 package com.example.makeup.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.makeup.bindingadapters.ProductsRowBinding
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.applyVeganColor
+import com.example.makeup.R
 import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.loadImageFromUrl
 import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.parseHtml
 import com.example.makeup.databinding.ProductsRowLayoutBinding
@@ -41,8 +44,10 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
                 parseHtml(descriptionTextView, description)
                 loadImageFromUrl(productImageView, imageLink)
                 nameTextView.text = name
-                applyVeganColor(leafImageView, tagList!!.contains("Vegan"))
-                applyVeganColor(leafTextView, tagList.contains("Vegan"))
+//                applyColor(leafImageView, tagList!!.contains("Vegan"))
+//                applyColor(leafTextView, tagList.contains("Vegan"))
+//                applyColor(naturalImageView, tagList.contains("Natural"))
+//                applyColor(naturalTextView, tagList.contains("Natural"))
             }
         }
     }
@@ -58,4 +63,6 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
         products = newData
         diffUtilResult.dispatchUpdatesTo(this)
     }
+
+
 }

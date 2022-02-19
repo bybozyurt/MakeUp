@@ -23,30 +23,6 @@ class ProductsRowBinding {
         }
 
 
-        fun applyVeganColor(view: View, vegan: Boolean){
-            if (vegan){
-                when(view){
-                    is TextView -> {
-                        view.setTextColor(
-                            ContextCompat.getColor(
-                                view.context,
-                                R.color.green
-                            )
-                        )
-
-                    }
-                    is ImageView -> {
-                        view.setColorFilter(
-                            ContextCompat.getColor(
-                                view.context,
-                                R.color.green
-                            )
-                        )
-                    }
-                }
-            }
-        }
-
         fun parseHtml(textView: TextView, description: String?){
             description?.let {
                 val desc = Jsoup.parse(it).text()

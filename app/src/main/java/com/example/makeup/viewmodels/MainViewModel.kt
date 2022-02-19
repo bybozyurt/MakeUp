@@ -4,7 +4,12 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
+import com.example.makeup.R
 import com.example.makeup.data.Repository
 import com.example.makeup.data.database.ProductsEntity
 import com.example.makeup.models.Products
@@ -96,6 +101,30 @@ class MainViewModel @Inject constructor(
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
             else -> false
+        }
+    }
+
+    private fun applyColor(view: View, tag: Boolean){
+        if (tag){
+            when(view){
+                is TextView -> {
+                    view.setTextColor(
+                        ContextCompat.getColor(
+                            view.context,
+                            R.color.green
+                        )
+                    )
+
+                }
+                is ImageView -> {
+                    view.setColorFilter(
+                        ContextCompat.getColor(
+                            view.context,
+                            R.color.green
+                        )
+                    )
+                }
+            }
         }
     }
 }

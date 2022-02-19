@@ -59,11 +59,11 @@ class ProductsFragment : Fragment() {
         navigateBottomSheet()
 
 
-        mainViewModel.pairMediatorLiveData.observe(viewLifecycleOwner, { (productsResponse, readProducts) ->
+        mainViewModel.pairMediatorLiveData.observe(viewLifecycleOwner) { (productsResponse, readProducts) ->
             handleReadDataErrors(binding.errorImageView, productsResponse, readProducts)
             handleReadDataErrors(binding.errorTextView, productsResponse, readProducts)
 
-        })
+        }
 
         return binding.root
     }
@@ -78,7 +78,7 @@ class ProductsFragment : Fragment() {
     //bottomSheet args
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readProducts.observeOnce(viewLifecycleOwner, { database ->
+            mainViewModel.readProducts.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     Log.d("RecipesFragment", "readDatabase called!")
                     mAdapter.setData(database[0].products)
@@ -86,7 +86,7 @@ class ProductsFragment : Fragment() {
                 } else {
                     requestApiData()
                 }
-            })
+            }
         }
     }
 
@@ -94,7 +94,7 @@ class ProductsFragment : Fragment() {
     private fun requestApiData() {
         Log.e("ahmet", "data from api")
         mainViewModel.getProducts(productsViewModel.applyQueries())
-        mainViewModel.productsResponse.observe(viewLifecycleOwner, { response ->
+        mainViewModel.productsResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
@@ -111,16 +111,16 @@ class ProductsFragment : Fragment() {
                 }
             }
 
-        })
+        }
     }
 
     private fun loadDataFromCache() {
         lifecycleScope.launch {
-            mainViewModel.readProducts.observe(viewLifecycleOwner, {database->
+            mainViewModel.readProducts.observe(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     mAdapter.setData(database[0].products)
                 }
-            })
+            }
         }
     }
 
@@ -150,9 +150,9 @@ class ProductsFragment : Fragment() {
     }
 
     private fun readBackOnline() {
-        productsViewModel.readBackOnline.observe(viewLifecycleOwner, {
+        productsViewModel.readBackOnline.observe(viewLifecycleOwner) {
             productsViewModel.backOnline = it
-        })
+        }
     }
 
     private fun showShimmerEffect() {
