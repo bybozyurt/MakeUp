@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 interface ProductsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRecipes(recipesEntity: ProductsEntity)
+    suspend fun insertProducts(productsEntity: ProductsEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavoriteProducts(favoritesEntity: FavoritesEntity)

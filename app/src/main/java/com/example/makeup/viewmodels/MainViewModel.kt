@@ -71,7 +71,7 @@ class MainViewModel @Inject constructor(
                 searchedProductsResponse.value = handleProductsResponse(response)
 
             } catch (e: Exception) {
-                searchedProductsResponse.value = NetworkResult.Error("Recipes not found")
+                searchedProductsResponse.value = NetworkResult.Error("Products not found")
             }
         } else {
             searchedProductsResponse.value = NetworkResult.Error("No Internet Connection")
@@ -88,7 +88,7 @@ class MainViewModel @Inject constructor(
                 val makeUp = productsResponse.value!!.data
                 //room
                 makeUp?.let {
-                    offlineCacheRecipes(makeUp)
+                    offlineCacheProducts(makeUp)
                 }
             } catch (e: Exception) {
                 productsResponse.value = NetworkResult.Error("Products not found.")
@@ -99,8 +99,8 @@ class MainViewModel @Inject constructor(
     }
 
     //room
-    private fun offlineCacheRecipes(foodRecipe: Products) {
-        val productsEntity = ProductsEntity(foodRecipe)
+    private fun offlineCacheProducts(products: Products) {
+        val productsEntity = ProductsEntity(products)
         insertProducts(productsEntity)
     }
 

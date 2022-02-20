@@ -61,9 +61,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
     }
 
     fun setData(newData: Products){
-        val recipesDiffUtil =
+        val productsDiffUtil =
             ProductsDiffUtil(products, newData)
-        val diffUtilResult = DiffUtil.calculateDiff(recipesDiffUtil)
+        val diffUtilResult = DiffUtil.calculateDiff(productsDiffUtil)
         products = newData
         diffUtilResult.dispatchUpdatesTo(this)
     }

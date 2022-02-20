@@ -81,7 +81,7 @@ class ProductsFragment : Fragment(), SearchView.OnQueryTextListener {
         lifecycleScope.launch {
             mainViewModel.readProducts.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty() && !args.backFromBottomSheet) {
-                    Log.d("RecipesFragment", "readDatabase called!")
+                    Log.d("ProductsFragment", "readDatabase called!")
                     mAdapter.setData(database[0].products)
                     hideShimmerEffect()
                 } else {

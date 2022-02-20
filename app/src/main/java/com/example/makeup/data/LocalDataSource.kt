@@ -19,7 +19,7 @@ class LocalDataSource @Inject constructor(
     }
 
     suspend fun insertProducts(productsEntity: ProductsEntity) {
-        productsDao.insertRecipes(productsEntity)
+        productsDao.insertProducts(productsEntity)
     }
 
     suspend fun insertFavoriteProducts(favoritesEntity: FavoritesEntity) {

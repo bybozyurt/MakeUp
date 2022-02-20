@@ -60,7 +60,7 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
                 targetView.isChecked = true
                 chipGroup.requestChildFocus(targetView, targetView)
             } catch (e: Exception) {
-                Log.e("RecipesBottomSheet", e.message.toString())
+                Log.e("ProductsBottomSheet", e.message.toString())
             }
         }
     }

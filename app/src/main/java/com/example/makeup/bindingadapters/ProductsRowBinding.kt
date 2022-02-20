@@ -3,11 +3,9 @@ package com.example.makeup.bindingadapters
 
 
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import coil.load
 import com.example.makeup.R
@@ -20,11 +18,11 @@ class ProductsRowBinding {
 
     companion object{
 
-        fun onProductClickListener(recipeRowLayout: ConstraintLayout, productsItem: ProductsItem){
-            recipeRowLayout.setOnClickListener {
+        fun onProductClickListener(productRowLayout: ConstraintLayout, productsItem: ProductsItem){
+            productRowLayout.setOnClickListener {
                 try {
                     val action = ProductsFragmentDirections.actionProductsFragmentToDetailsActivity(productsItem)
-                    recipeRowLayout.findNavController().navigate(action)
+                    productRowLayout.findNavController().navigate(action)
                 }catch (e: Exception){
                     Log.e("onProductClickListener",e.toString())
                 }
