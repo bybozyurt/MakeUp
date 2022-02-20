@@ -11,7 +11,7 @@ import com.example.makeup.databinding.FragmentInstructionsBinding
 import com.example.makeup.models.ProductsItem
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
 
-class InstructionsFragment : Fragment() {
+class WebsiteFragment : Fragment() {
 
     private var _binding: FragmentInstructionsBinding? = null
     private val binding get() = _binding!!

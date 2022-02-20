@@ -28,7 +28,7 @@ class Constants {
 
         const val PRODUCTS_BUNDLE_KEY = "productsBundle"
         const val OVERVIEW_FRAGMENT = "Overview"
-        const val INSTRUCTIONS_FRAGMENT = "Instructions"
+        const val WEBSITE_FRAGMENT = "Website"
         const val COLORS_FRAGMENT = "Colors"
 
 

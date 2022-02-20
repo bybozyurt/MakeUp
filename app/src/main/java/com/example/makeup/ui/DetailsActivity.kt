@@ -11,10 +11,10 @@ import com.example.makeup.R
 import com.example.makeup.adapters.PagerAdapter
 import com.example.makeup.databinding.ActivityDetailsBinding
 import com.example.makeup.ui.fragments.colors.ColorsFragment
-import com.example.makeup.ui.fragments.instructions.InstructionsFragment
+import com.example.makeup.ui.fragments.instructions.WebsiteFragment
 import com.example.makeup.ui.fragments.overview.OverviewFragment
 import com.example.makeup.util.Constants.Companion.COLORS_FRAGMENT
-import com.example.makeup.util.Constants.Companion.INSTRUCTIONS_FRAGMENT
+import com.example.makeup.util.Constants.Companion.WEBSITE_FRAGMENT
 import com.example.makeup.util.Constants.Companion.OVERVIEW_FRAGMENT
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
 import com.example.makeup.viewmodels.MainViewModel
@@ -40,14 +40,14 @@ class DetailsActivity : AppCompatActivity() {
         with(fragments) {
             add(OverviewFragment())
             add(ColorsFragment())
-            add(InstructionsFragment())
+            add(WebsiteFragment())
         }
 
         val titles = ArrayList<String>()
         with(titles) {
             add(OVERVIEW_FRAGMENT)
             add(COLORS_FRAGMENT)
-            add(INSTRUCTIONS_FRAGMENT)
+            add(WEBSITE_FRAGMENT)
         }
 
         val resultBundle = Bundle()
