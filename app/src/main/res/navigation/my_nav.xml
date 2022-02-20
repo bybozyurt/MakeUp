@@ -25,7 +25,11 @@
         android:id="@+id/favoriteProductsFragment"
         android:name="com.example.makeup.ui.fragments.favorites.FavoriteProductsFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_favorite_products" />
+        tools:layout="@layout/fragment_favorite_products" >
+        <action
+            android:id="@+id/action_favoriteProductsFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
     <dialog
         android:id="@+id/productBottomSheet"
         android:name="com.example.makeup.ui.fragments.products.bottomsheet.ProductBottomSheet"

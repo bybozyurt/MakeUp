@@ -44,4 +44,5 @@
     <string name="cruelty_free">Cruelty Free</string>
     <string name="colors_not_found">Colors Not Found.</string>
     <string name="save">Save</string>
+    <string name="no_favorite_products">No Favorite Products</string>
 </resources>
