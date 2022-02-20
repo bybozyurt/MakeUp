@@ -58,7 +58,7 @@ class ProductsViewModel @Inject constructor(
     fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
-        queries[QUERY_BRAND] = "colourpop"
+        queries[QUERY_BRAND] = "l'oreal"
         queries[QUERY_PRODUCT_TYPE] = "lipstick"
 
         if (this@ProductsViewModel::brandAndCategory.isInitialized) {

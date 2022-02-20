@@ -42,17 +42,10 @@
                 android:id="@+id/brand_chipGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:checkedChip="@+id/main_course_chip"
+                app:checkedChip="@+id/loreal_chip"
                 app:selectionRequired="true"
                 app:singleLine="true"
                 app:singleSelection="true">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/main_course_chip"
-                    style="@style/CustomChipStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dior"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/loreal_chip"
@@ -60,6 +53,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/l_oreal"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/dior_chip"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dior"/>
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/milani_chip"

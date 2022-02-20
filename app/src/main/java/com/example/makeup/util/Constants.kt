@@ -15,7 +15,7 @@ class Constants {
         const val PRODUCTS_TABLE = "products_table"
 
         //BottomSheet and Preferences
-        const val DEFAULT_BRAND = "dior"
+        const val DEFAULT_BRAND = "l'oreal"
         const val DEFAULT_CATEGORY = "lipstick"
 
         const val PREFERENCES_NAME = "makeup_preferences"
