@@ -4,14 +4,10 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.*
-import com.example.makeup.R
 import com.example.makeup.data.Repository
 import com.example.makeup.data.database.ProductsEntity
+import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.models.Products
 import com.example.makeup.util.NetworkResult
 import com.example.makeup.util.PairMediatorLiveData
@@ -29,11 +25,28 @@ class MainViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
     val readProducts: LiveData<List<ProductsEntity>> = repository.local.readDatabase().asLiveData()
-    val readProducts2 : LiveData<List<ProductsEntity>> = readProducts
+    val readFavoriteProducts: LiveData<List<FavoritesEntity>> =
+        repository.local.readFavoriteProducts().asLiveData()
+    val readProducts2: LiveData<List<ProductsEntity>> = readProducts
 
     private fun insertProducts(productsEntity: ProductsEntity) =
         viewModelScope.launch(Dispatchers.IO) {
-            repository.local.insertRecipes(productsEntity)
+            repository.local.insertProducts(productsEntity)
+        }
+
+    private fun insertFavoriteProducts(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertFavoriteProducts(favoritesEntity)
+        }
+
+    private fun deleteFavoriteProduct(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteFavoriteProduct(favoritesEntity)
+        }
+
+    private fun deleteAllFavoriteProducts() =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteAllFavoriteProducts()
         }
 
     var productsResponse: MutableLiveData<NetworkResult<Products>> = MutableLiveData()

@@ -13,6 +13,7 @@ class Constants {
         // ROOM Database
         const val DATABASE_NAME = "products_database"
         const val PRODUCTS_TABLE = "products_table"
+        const val FAVORITE_PRODUCTS_TABLE = "favorite_products_table"
 
         //BottomSheet and Preferences
         const val DEFAULT_BRAND = "l'oreal"

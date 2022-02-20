@@ -1,9 +1,7 @@
 package com.example.makeup.data.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
+import com.example.makeup.data.database.entities.FavoritesEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -12,6 +10,20 @@ interface ProductsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecipes(recipesEntity: ProductsEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFavoriteProducts(favoritesEntity: FavoritesEntity)
+
     @Query("SELECT * FROM products_table ORDER BY id ASC")
-    fun readRecipes(): Flow<List<ProductsEntity>>
+    fun readProducts(): Flow<List<ProductsEntity>>
+
+    @Query("SELECT * FROM favorite_products_table ORDER BY id ASC")
+    fun readFavoriteProducts(): Flow<List<FavoritesEntity>>
+
+    @Delete
+    suspend fun deleteFavoriteProduct(favoritesEntity: FavoritesEntity)
+
+    @Query("DELETE FROM favorite_products_table")
+    suspend fun deleteAllFavoriteProducts()
+
+
 }
