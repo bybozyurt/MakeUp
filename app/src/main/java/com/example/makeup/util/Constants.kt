@@ -25,6 +25,11 @@ class Constants {
         const val PREFERENCES_CATEGORY_ID = "categoryId"
         const val PREFERENCES_BACK_ONLINE = "backOnline"
 
+        const val PRODUCTS_BUNDLE_KEY = "productsBundle"
+        const val OVERVIEW_FRAGMENT = "Overview"
+        const val INSTRUCTIONS_FRAGMENT = "Instructions"
+        const val COLORS_FRAGMENT = "Colors"
+
 
     }
 

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makeup.R
 import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.loadImageFromUrl
+import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.onProductClickListener
 import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.parseHtml
 import com.example.makeup.databinding.ProductsRowLayoutBinding
 import com.example.makeup.models.Products
@@ -41,6 +42,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
         with(holder.binding){
             with(currentProducts){
+                onProductClickListener(productsRowLayout, this)
                 parseHtml(descriptionTextView, description)
                 loadImageFromUrl(productImageView, imageLink)
                 nameTextView.text = name

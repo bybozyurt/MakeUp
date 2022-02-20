@@ -1,8 +1,11 @@
 package com.example.makeup.models
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class ProductsItem(
     @SerializedName("api_featured_image")
     val apiFeaturedİmage: String?,
@@ -32,4 +35,4 @@ data class ProductsItem(
     val tagList: List<String>?,
     @SerializedName("website_link")
     val websiteLink: String?
-)
+): Parcelable

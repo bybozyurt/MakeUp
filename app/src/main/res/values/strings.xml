@@ -33,4 +33,13 @@
     <string name="apply">Apply</string>
     <string name="search_by_tag">Search By Tag</string>
     <string name="organic">Organic</string>
+    <string name="canadian">Canadian</string>
+    <string name="alcohol_free">Alcohol Free</string>
+    <string name="silicone_free">Silicone Free</string>
+    <string name="sugar_free">Sugar Free</string>
+    <string name="oil_free">Oil Free</string>
+    <string name="chemical_free">Chemical Free</string>
+    <string name="water_free">Water Free</string>
+    <string name="hypoallergenic">Hypoallergenic</string>
+    <string name="cruelty_free">Cruelty Free</string>
 </resources>
