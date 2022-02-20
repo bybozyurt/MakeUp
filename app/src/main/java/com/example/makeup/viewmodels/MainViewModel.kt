@@ -72,7 +72,6 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.remote.getProducts(queries)
                 productsResponse.value = handleProductsResponse(response)
-
                 val makeUp = productsResponse.value!!.data
                 //room
                 makeUp?.let {

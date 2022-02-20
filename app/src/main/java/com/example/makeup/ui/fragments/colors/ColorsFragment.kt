@@ -46,7 +46,13 @@ class ColorsFragment : Fragment() {
     private fun initBundle(){
         val args = arguments
         myBundle = args?.getParcelable(PRODUCTS_BUNDLE_KEY)
-        myBundle?.productColors?.let { mAdapter.setData(it) }
+        myBundle?.productColors?.let {
+            mAdapter.setData(it)
+            if (it.isNullOrEmpty()){
+                binding.errorImageView.visibility = View.VISIBLE
+                binding.errorTextView.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onDestroyView() {

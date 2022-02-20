@@ -42,4 +42,5 @@
     <string name="water_free">Water Free</string>
     <string name="hypoallergenic">Hypoallergenic</string>
     <string name="cruelty_free">Cruelty Free</string>
+    <string name="colors_not_found">Colors Not Found.</string>
 </resources>
