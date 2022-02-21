@@ -40,6 +40,7 @@ class OverviewFragment : Fragment() {
                 updateColors(contains("Natural"), natTextView, binding.natImageView)
                 updateColors(contains("cruelty free"), crueltyFreeTextView, crueltyFreeImageView)
                 updateColors(contains("Hypoallergenic"), hypoAllergenicTextView, hypoAllergenicImageView)
+                updateColors(contains("EWG Verified"), ewgTextView, ewgImageView)
 
             }
 

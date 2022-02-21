@@ -60,10 +60,8 @@ class FavoriteProductsAdapter(
                 favoriteNameTextView.text = name.toString()
                 applyColor(favoriteLeafImageView, tagList!!.contains("Vegan"))
                 applyColor(favoriteLeafTextView, tagList.contains("Vegan"))
-                applyColor(favoriteNaturalImageView, tagList.contains("Natural"))
-                applyColor(favoriteNaturalTextView, tagList.contains("Natural"))
-                applyColor(favoriteOrganicImageView, tagList.contains("Organic"))
-                applyColor(favoriteOrganicTextView, tagList.contains("Organic"))
+                applyColor(favoriteGlutenFreeImageView, tagList.contains("Gluten Free"))
+                applyColor(favoriteGlutenFreeTextView, tagList.contains("Gluten Free"))
 
                 //Single Click Listener
                 favoriteProductsRowLayout.setOnClickListener {

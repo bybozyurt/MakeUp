@@ -91,42 +91,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/favorite_leaf_imageView" />
 
             <ImageView
-                android:id="@+id/favorite_natural_imageView"
+                android:id="@+id/favorite_gluten_free_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/favorite_natural_textView"
-                app:layout_constraintStart_toStartOf="@+id/favorite_natural_textView"
+                app:layout_constraintEnd_toEndOf="@+id/favorite_gluten_free_textView"
+                app:layout_constraintStart_toStartOf="@+id/favorite_gluten_free_textView"
                 app:layout_constraintTop_toTopOf="@+id/favorite_leaf_imageView"
-                app:srcCompat="@drawable/ic_natural" />
-
-            <TextView
-                android:id="@+id/favorite_natural_textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:text="@string/natural"
-                android:textAlignment="center"
-                app:layout_constraintStart_toEndOf="@+id/favorite_leaf_textView"
-                app:layout_constraintTop_toBottomOf="@+id/favorite_natural_imageView" />
-
-            <ImageView
-                android:id="@+id/favorite_organic_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/favorite_organic_textView"
-                app:layout_constraintStart_toStartOf="@+id/favorite_organic_textView"
-                app:layout_constraintTop_toTopOf="@+id/favorite_natural_imageView"
                 app:srcCompat="@drawable/ic_gluten_free" />
 
             <TextView
-                android:id="@+id/favorite_organic_textView"
+                android:id="@+id/favorite_gluten_free_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="@string/organic"
+                android:layout_marginStart="24dp"
+                android:text="@string/gluten_free"
                 android:textAlignment="center"
-                app:layout_constraintStart_toEndOf="@+id/favorite_natural_textView"
-                app:layout_constraintTop_toBottomOf="@+id/favorite_organic_imageView" />
+                app:layout_constraintBottom_toBottomOf="@+id/favorite_leaf_textView"
+                app:layout_constraintStart_toEndOf="@+id/favorite_leaf_textView"
+                app:layout_constraintTop_toBottomOf="@+id/favorite_gluten_free_imageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

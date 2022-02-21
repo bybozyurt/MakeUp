@@ -48,10 +48,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
                 nameTextView.text = name
                 applyColor(leafImageView, tagList!!.contains("Vegan"))
                 applyColor(leafTextView, tagList.contains("Vegan"))
-                applyColor(naturalImageView, tagList.contains("Natural"))
-                applyColor(naturalTextView, tagList.contains("Natural"))
-                applyColor(organicImageView, tagList.contains("Organic"))
-                applyColor(organicTextView, tagList.contains("Organic"))
+                applyColor(glutenFreeImageView, tagList.contains("Gluten Free"))
+                applyColor(glutenFreeTextView, tagList.contains("Gluten Free"))
+
             }
         }
     }

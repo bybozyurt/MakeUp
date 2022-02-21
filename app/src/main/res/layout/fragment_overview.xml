@@ -196,6 +196,29 @@
         app:layout_constraintStart_toEndOf="@+id/crueltyFree_imageView"
         app:layout_constraintTop_toTopOf="@+id/crueltyFree_imageView" />
 
+    <ImageView
+        android:id="@+id/ewg_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_checkmark"
+        app:layout_constraintStart_toStartOf="@+id/organic_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/organic_imageView"
+        app:tint="@color/darkGray" />
+
+    <TextView
+        android:id="@+id/ewg_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ewg_verified"
+        android:textColor="@color/darkGray"
+        android:layout_marginStart="6dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ewg_imageView"
+        app:layout_constraintStart_toEndOf="@+id/ewg_imageView"
+        app:layout_constraintTop_toTopOf="@+id/ewg_imageView"
+
+        />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
