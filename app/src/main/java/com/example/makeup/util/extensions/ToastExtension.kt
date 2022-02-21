@@ -1,4 +1,4 @@
-package com.example.fooder.util.extensions
+package com.example.makeup.util.extensions
 
 import android.content.Context
 import android.widget.Toast

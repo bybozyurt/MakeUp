@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
-import com.example.fooder.util.extensions.showSnackBar
+import com.example.makeup.util.extensions.showSnackBar
 import com.example.makeup.R
 import com.example.makeup.adapters.PagerAdapter
 import com.example.makeup.data.database.entities.FavoritesEntity

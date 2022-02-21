@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fooder.util.extensions.toast
-import com.example.fooder.util.observeOnce
+import com.example.makeup.util.extensions.toast
+import com.example.makeup.util.extensions.observeOnce
 import com.example.makeup.R
 import com.example.makeup.adapters.ProductsAdapter
 import com.example.makeup.bindingadapters.ProductsBinding.Companion.handleReadDataErrors

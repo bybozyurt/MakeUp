@@ -1,4 +1,4 @@
-package com.example.fooder.util
+package com.example.makeup.util.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData

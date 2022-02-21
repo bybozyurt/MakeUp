@@ -5,7 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fooder.util.extensions.showSnackBar
+import com.example.makeup.util.extensions.showSnackBar
 import com.example.makeup.R
 import com.example.makeup.adapters.FavoriteProductsAdapter
 import com.example.makeup.bindingadapters.FavoriteProductsBinding.Companion.setVisibility
@@ -17,8 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavoriteProductsFragment : Fragment() {
 
     private val mainViewModel: MainViewModel by viewModels()
-    private val mAdapter: FavoriteProductsAdapter by lazy { FavoriteProductsAdapter() }
-
+    private val mAdapter: FavoriteProductsAdapter by lazy { FavoriteProductsAdapter(requireActivity(), mainViewModel) }
 
     private var _binding: FragmentFavoriteProductsBinding? = null
     private val binding get() = _binding!!
@@ -29,6 +28,7 @@ class FavoriteProductsFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentFavoriteProductsBinding.inflate(layoutInflater, container, false)
+        setHasOptionsMenu(true)
         binding.lifecycleOwner = this
         setupRecyclerView()
 
@@ -41,6 +41,20 @@ class FavoriteProductsFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.favorite_products_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.deleteAll_favorite_products_menu)
+        {
+            mainViewModel.deleteAllFavoriteProducts()
+            showSnackBar("All Products Removed.", "Okay", binding.root)
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
 
@@ -56,6 +70,7 @@ class FavoriteProductsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        mAdapter.clearContextualActionMode()
     }
 
 

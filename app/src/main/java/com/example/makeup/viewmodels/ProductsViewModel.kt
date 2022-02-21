@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.fooder.util.extensions.toast
+import com.example.makeup.util.extensions.toast
 import com.example.makeup.data.BrandAndCategory
 import com.example.makeup.data.DataStoreRepository
 import com.example.makeup.util.Constants.Companion.DEFAULT_BRAND
