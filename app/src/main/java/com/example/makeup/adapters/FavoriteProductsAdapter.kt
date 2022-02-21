@@ -167,7 +167,7 @@ class FavoriteProductsAdapter(
             }
             showSnackBar(
                 rootView,
-                "${selectedProducts.size} Product/s removed.",
+                "${selectedProducts.size} Produoverviewct/s removed.",
                 "Okay",
             )
             multiSelection = false

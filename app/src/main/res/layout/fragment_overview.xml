@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_overview_scene"
     tools:context=".ui.fragments.overview.OverviewFragment">
 
     <ImageView
@@ -134,8 +135,8 @@
         android:id="@+id/canadianFree_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_checkmark"
         android:layout_marginTop="12dp"
+        android:src="@drawable/ic_checkmark"
         app:layout_constraintStart_toStartOf="@+id/vegan_imageView"
         app:layout_constraintTop_toBottomOf="@+id/vegan_imageView"
         app:tint="@color/darkGray" />
@@ -144,9 +145,9 @@
         android:id="@+id/canadianFree_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:text="@string/canadian"
         android:textColor="@color/darkGray"
-        android:layout_marginStart="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/canadianFree_imageView"
         app:layout_constraintStart_toEndOf="@+id/canadianFree_imageView"
         app:layout_constraintTop_toTopOf="@+id/canadianFree_imageView" />
@@ -167,9 +168,9 @@
         android:id="@+id/hypoAllergenic_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:text="@string/hypoallergenic"
         android:textColor="@color/darkGray"
-        android:layout_marginStart="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/hypoAllergenic_imageView"
         app:layout_constraintStart_toEndOf="@+id/hypoAllergenic_imageView"
         app:layout_constraintTop_toTopOf="@+id/hypoAllergenic_imageView" />
@@ -188,14 +189,15 @@
         android:id="@+id/cruelty_free_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
         android:text="@string/cruelty_free"
         android:textColor="@color/darkGray"
-        android:layout_marginStart="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/crueltyFree_imageView"
         app:layout_constraintStart_toEndOf="@+id/crueltyFree_imageView"
         app:layout_constraintTop_toTopOf="@+id/crueltyFree_imageView" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="12dp"
@@ -223,4 +225,4 @@
         </LinearLayout>
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
