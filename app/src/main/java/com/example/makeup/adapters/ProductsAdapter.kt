@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ import com.example.makeup.util.extensions.parseHtml
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
     private var products = emptyList<ProductsItem>()
+    private lateinit var rootView: View
 
     class MyViewHolder(val binding: ProductsRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -40,16 +42,24 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentProducts = products[position]
 
-        with(holder.binding){
-            with(currentProducts){
+        rootView = holder.itemView.rootView
+
+        with(holder.binding) {
+            with(currentProducts) {
                 productsRowLayout.onProductClickListener(this)
                 descriptionTextView.parseHtml(description)
                 productImageView.loadImageFromUrl(imageLink)
                 nameTextView.text = name
-                applyColor(leafImageView, tagList!!.contains("Vegan"))
-                applyColor(leafTextView, tagList.contains("Vegan"))
-                applyColor(glutenFreeImageView, tagList.contains("Gluten Free"))
-                applyColor(glutenFreeTextView, tagList.contains("Gluten Free"))
+                updateColors(
+                    tagList!!.contains(rootView.resources.getString(R.string.vegan)),
+                    leafTextView,
+                    leafImageView
+                )
+                updateColors(
+                    tagList.contains(rootView.resources.getString(R.string.gluten_free)),
+                    glutenFreeTextView,
+                    glutenFreeImageView
+                )
 
             }
         }
@@ -59,7 +69,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
         return products.size
     }
 
-    fun setData(newData: Products){
+    fun setData(newData: Products) {
         val productsDiffUtil =
             ProductsDiffUtil(products, newData)
         val diffUtilResult = DiffUtil.calculateDiff(productsDiffUtil)
@@ -67,28 +77,25 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
         diffUtilResult.dispatchUpdatesTo(this)
     }
 
-    private fun applyColor(view: View, tag: Boolean){
-        if (tag){
-            when(view){
-                is TextView -> {
-                    view.setTextColor(
-                        ContextCompat.getColor(
-                            view.context,
-                            R.color.green
-                        )
-                    )
-
-                }
-                is ImageView -> {
-                    view.setColorFilter(
-                        ContextCompat.getColor(
-                            view.context,
-                            R.color.green
-                        )
-                    )
-                }
-            }
+    private fun updateColors(stateIsOn: Boolean, textView: TextView, imageView: ImageView) {
+        if (stateIsOn) {
+            imageView.setColorFilter(
+                ContextCompat.getColor(
+                    rootView.context.applicationContext,
+                    R.color.green
+                )
+            )
+            textView.setTextColor(
+                ContextCompat.getColor(
+                    rootView.context.applicationContext,
+                    R.color.green
+                )
+            )
+        }else {
+            imageView.setColorFilter(ContextCompat.getColor(rootView.context.applicationContext, R.color.darkGray))
+            textView.setTextColor(ContextCompat.getColor(rootView.context.applicationContext, R.color.darkGray))
         }
+
     }
 
 

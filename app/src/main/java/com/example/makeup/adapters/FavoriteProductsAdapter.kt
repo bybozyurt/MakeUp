@@ -57,21 +57,15 @@ class FavoriteProductsAdapter(
                 favoriteDescriptionTextView.parseHtml(description)
                 favoriteNameTextView.text = name.toString()
 
-                applyColor(
-                    favoriteLeafImageView,
-                    tagList!!.contains(rootView.resources.getString(R.string.vegan))
-                )
-                applyColor(
+                updateColors(
+                    tagList!!.contains(rootView.resources.getString(R.string.vegan)),
                     favoriteLeafTextView,
-                    tagList.contains(rootView.resources.getString(R.string.vegan))
+                    favoriteLeafImageView
                 )
-                applyColor(
-                    favoriteGlutenFreeImageView,
-                    tagList.contains(rootView.resources.getString(R.string.gluten_free))
-                )
-                applyColor(
+                updateColors(
+                    tagList.contains(rootView.resources.getString(R.string.gluten_free)),
                     favoriteGlutenFreeTextView,
-                    tagList.contains(rootView.resources.getString(R.string.gluten_free))
+                    favoriteGlutenFreeImageView
                 )
 
                 //Single Click Listener
@@ -173,11 +167,6 @@ class FavoriteProductsAdapter(
             selectedProducts.forEach {
                 mainViewModel.deleteFavoriteProduct(it)
             }
-//            showSnackBar(
-//                rootView,
-//                "${selectedProducts.size} Product/s removed.",
-//                "Okay",
-//            )
             multiSelection = false
             selectedProducts.clear()
             actionMode?.finish()
@@ -198,28 +187,16 @@ class FavoriteProductsAdapter(
         requireActivity.window.statusBarColor = ContextCompat.getColor(requireActivity, color)
     }
 
-    private fun applyColor(view: View, tag: Boolean) {
-        if (tag) {
-            when (view) {
-                is TextView -> {
-                    view.setTextColor(
-                        ContextCompat.getColor(
-                            view.context,
-                            R.color.green
-                        )
-                    )
-
-                }
-                is ImageView -> {
-                    view.setColorFilter(
-                        ContextCompat.getColor(
-                            view.context,
-                            R.color.green
-                        )
-                    )
-                }
-            }
+    private fun updateColors(stateIsOn: Boolean, textView: TextView, imageView: ImageView) {
+        if (stateIsOn) {
+            imageView.setColorFilter(ContextCompat.getColor(rootView.context.applicationContext, R.color.green))
+            textView.setTextColor(ContextCompat.getColor(rootView.context.applicationContext, R.color.green))
         }
+        else {
+            imageView.setColorFilter(ContextCompat.getColor(rootView.context.applicationContext, R.color.darkGray))
+            textView.setTextColor(ContextCompat.getColor(rootView.context.applicationContext, R.color.darkGray))
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -239,15 +216,5 @@ class FavoriteProductsAdapter(
             mActionMode.finish()
         }
     }
-
-//    fun showSnackBar(view: View, message: String, setActionMode: String) {
-//        Snackbar.make(
-//            view,
-//            message,
-//            Snackbar.LENGTH_SHORT
-//        ).setAction(setActionMode) {}
-//            .show()
-//    }
-
 
 }
