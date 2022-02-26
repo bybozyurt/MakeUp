@@ -188,6 +188,7 @@ class ProductsFragment : Fragment(), SearchView.OnQueryTextListener {
     private fun searchApiData(searchQuery: String) {
         showShimmerEffect()
         mainViewModel.getSearchProducts(productsViewModel.applySearchQuery(searchQuery))
+        Log.e("ahmeta",searchQuery)
         mainViewModel.searchedProductsResponse.observe(viewLifecycleOwner) { response ->
             when(response){
                 is NetworkResult.Success -> {
@@ -195,6 +196,7 @@ class ProductsFragment : Fragment(), SearchView.OnQueryTextListener {
                     response.data?.let {
                         mAdapter.setData(it)
                     }
+                    productsViewModel.saveBrandAndCategory()
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()

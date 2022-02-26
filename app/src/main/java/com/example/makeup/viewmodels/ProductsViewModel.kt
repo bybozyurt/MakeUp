@@ -1,6 +1,7 @@
 package com.example.makeup.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -39,7 +40,10 @@ class ProductsViewModel @Inject constructor(
                     brandAndCategory.selectedBrand,
                     brandAndCategory.selectedBrandId,
                     brandAndCategory.selectedCategory,
-                    brandAndCategory.selectedCategoryId
+                    brandAndCategory.selectedCategoryId,
+                    brandAndCategory.selectedTag,
+                    brandAndCategory.selectedTagId,
+                    brandAndCategory.checkedControl
                 )
             }
         }
@@ -48,22 +52,32 @@ class ProductsViewModel @Inject constructor(
         brand: String,
         brandId: Int,
         category: String,
-        categoryId: Int
+        categoryId: Int,
+        tag: String,
+        tagId: Int,
+        checkedControl: Boolean,
     ) {
 
-        brandAndCategory = BrandAndCategory(brand, brandId, category, categoryId)
+        brandAndCategory =
+            BrandAndCategory(brand, brandId, category, categoryId, tag, tagId, checkedControl)
 
     }
 
     fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
-        queries[QUERY_BRAND] = "l'oreal"
-        queries[QUERY_PRODUCT_TYPE] = "lipstick"
 
         if (this@ProductsViewModel::brandAndCategory.isInitialized) {
-            queries[QUERY_BRAND] = brandAndCategory.selectedBrand
-            queries[QUERY_PRODUCT_TYPE] = brandAndCategory.selectedCategory
+            if (!brandAndCategory.checkedControl) {
+                queries[QUERY_BRAND] = brandAndCategory.selectedBrand
+                queries[QUERY_PRODUCT_TYPE] = brandAndCategory.selectedCategory
+                Log.e(
+                    "şahinbaba",
+                    brandAndCategory.selectedBrand + "-----" + brandAndCategory.selectedCategory
+                )
+            } else {
+                queries[QUERY_TAGS] = brandAndCategory.selectedTag
+            }
         } else {
             queries[QUERY_BRAND] = DEFAULT_BRAND
             queries[QUERY_PRODUCT_TYPE] = DEFAULT_CATEGORY
@@ -73,7 +87,7 @@ class ProductsViewModel @Inject constructor(
     }
 
 
-    fun applySearchQuery(searchQuery: String): HashMap<String, String>{
+    fun applySearchQuery(searchQuery: String): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
 
         queries[QUERY_TAGS] = searchQuery

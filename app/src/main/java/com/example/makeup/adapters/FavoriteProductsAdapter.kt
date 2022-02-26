@@ -58,17 +58,28 @@ class FavoriteProductsAdapter(
                 loadImageFromUrl(favoriteProductImageView, imageLink)
                 parseHtml(favoriteDescriptionTextView, description)
                 favoriteNameTextView.text = name.toString()
-                applyColor(favoriteLeafImageView, tagList!!.contains("Vegan"))
-                applyColor(favoriteLeafTextView, tagList.contains("Vegan"))
-                applyColor(favoriteGlutenFreeImageView, tagList.contains("Gluten Free"))
-                applyColor(favoriteGlutenFreeTextView, tagList.contains("Gluten Free"))
+                applyColor(
+                    favoriteLeafImageView,
+                    tagList!!.contains(rootView.resources.getString(R.string.vegan))
+                )
+                applyColor(
+                    favoriteLeafTextView,
+                    tagList.contains(rootView.resources.getString(R.string.vegan))
+                )
+                applyColor(
+                    favoriteGlutenFreeImageView,
+                    tagList.contains(rootView.resources.getString(R.string.gluten_free))
+                )
+                applyColor(
+                    favoriteGlutenFreeTextView,
+                    tagList.contains(rootView.resources.getString(R.string.gluten_free))
+                )
 
                 //Single Click Listener
                 favoriteProductsRowLayout.setOnClickListener {
-                    if(multiSelection){
+                    if (multiSelection) {
                         applySelection(holder, favoriteProducts[position])
-                    }
-                    else{
+                    } else {
                         val action =
                             FavoriteProductsFragmentDirections.actionFavoriteProductsFragmentToDetailsActivity(
                                 this
@@ -165,7 +176,7 @@ class FavoriteProductsAdapter(
             }
             showSnackBar(
                 rootView,
-                "${selectedProducts.size} Produoverviewct/s removed.",
+                "${selectedProducts.size} Product/s removed.",
                 "Okay",
             )
             multiSelection = false
@@ -230,12 +241,12 @@ class FavoriteProductsAdapter(
         }
     }
 
-    fun showSnackBar(view: View, message: String, setActionMode: String){
+    fun showSnackBar(view: View, message: String, setActionMode: String) {
         Snackbar.make(
             view,
             message,
             Snackbar.LENGTH_SHORT
-        ).setAction(setActionMode){}
+        ).setAction(setActionMode) {}
             .show()
     }
 

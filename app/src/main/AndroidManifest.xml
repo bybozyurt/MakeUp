@@ -16,15 +16,21 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.fragments.products.bottomsheet.Mainbt"
+            android:exported="false" />
+        <activity
+            android:name=".ui.fragments.MainBottomSheet"
+            android:exported="false" />
+        <activity
             android:name=".ui.DetailsActivity"
-            android:theme="@style/DetailsActivityStyles"
+            android:exported="false"
             android:label="Details"
             android:screenOrientation="portrait"
-            android:exported="false"  />
+            android:theme="@style/DetailsActivityStyles" />
         <activity
             android:name=".ui.MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

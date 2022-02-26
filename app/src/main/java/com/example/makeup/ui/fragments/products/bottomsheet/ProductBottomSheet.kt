@@ -1,5 +1,8 @@
 package com.example.makeup.ui.fragments.products.bottomsheet
 
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,11 +14,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.makeup.databinding.FragmentProductBottomSheetBinding
 import com.example.makeup.util.Constants.Companion.DEFAULT_BRAND
 import com.example.makeup.util.Constants.Companion.DEFAULT_CATEGORY
+import com.example.makeup.util.Constants.Companion.DEFAULT_TAGS
+import com.example.makeup.util.Constants.Companion.KEY_BRAND
+import com.example.makeup.util.Constants.Companion.KEY_CATEGORY
+import com.example.makeup.util.Constants.Companion.PREFS_FILENAME
 import com.example.makeup.viewmodels.ProductsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import java.lang.Exception
+import kotlinx.android.synthetic.main.fragment_product_bottom_sheet.view.*
 import java.util.*
 
 
@@ -31,6 +38,10 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
     private var brandChipId = 0
     private var categoryChip = DEFAULT_CATEGORY
     private var categoryChipId = 0
+    private var tagChip = DEFAULT_TAGS
+    private var tagChipId = 0
+    private var isCheckedControl = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +57,36 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
         readBrandAndCategoryObserve()
         brandChipGroupListener()
         categoryChipGroupListener()
+        tagChipGroupListener()
         applyButtonListener()
+        onlyTagsSwitch()
+
+
 
 
         return binding.root
+    }
+
+    private fun onlyTagsSwitch() {
+        binding.onlyTagsSwitch.setOnCheckedChangeListener { _, isChecked ->
+            isCheckedControl = isChecked
+            if (isCheckedControl) {
+                binding.categoryTxt.visibility = View.GONE
+                binding.categoryChipGroup.visibility = View.GONE
+                binding.brandTxt.visibility = View.GONE
+                binding.brandChipGroup.visibility = View.GONE
+                binding.tagsTxt.visibility = View.VISIBLE
+                binding.tagsChipGroup.visibility = View.VISIBLE
+            } else {
+                binding.tagsChipGroup.visibility = View.GONE
+                binding.tagsTxt.visibility = View.GONE
+                binding.categoryTxt.visibility = View.VISIBLE
+                binding.categoryChipGroup.visibility = View.VISIBLE
+                binding.brandTxt.visibility = View.VISIBLE
+                binding.brandChipGroup.visibility = View.VISIBLE
+
+            }
+        }
     }
 
 
@@ -65,13 +102,16 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    private fun readBrandAndCategoryObserve(){
-
+    private fun readBrandAndCategoryObserve() {
         productViewModel.readBrandAndCategory.asLiveData().observe(viewLifecycleOwner) { value ->
             brandChip = value.selectedBrand
             categoryChip = value.selectedCategory
+            tagChip = value.selectedTag
+            binding.onlyTagsSwitch.isChecked = value.checkedControl
             updateChip(value.selectedBrandId, binding.brandChipGroup)
             updateChip(value.selectedCategoryId, binding.categoryChipGroup)
+            updateChip(value.selectedTagId, binding.tagsChipGroup)
+
         }
     }
 
@@ -82,6 +122,15 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
             brandChip = selectedMealType
             brandChipId = selectedChipId
 
+        }
+    }
+
+    private fun tagChipGroupListener() {
+        binding.tagsChipGroup.setOnCheckedChangeListener { group, selectedChipId ->
+            val chip = group.findViewById<Chip>(selectedChipId)
+            val selectedTag = chip.text.toString().lowercase(Locale.ROOT)
+            tagChip = selectedTag
+            tagChipId = selectedChipId
         }
     }
 
@@ -96,12 +145,17 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
 
     private fun applyButtonListener() {
         binding.applyBtn.setOnClickListener {
+
             productViewModel.saveBrandAndCategoryTemp(
                 brandChip,
                 brandChipId,
                 categoryChip,
-                categoryChipId
+                categoryChipId,
+                tagChip,
+                tagChipId,
+                isCheckedControl
             )
+            Log.e("şahin", brandChip + "--" + categoryChip)
 
             val action =
                 ProductBottomSheetDirections.actionProductBottomSheetToProductsFragment(true)
