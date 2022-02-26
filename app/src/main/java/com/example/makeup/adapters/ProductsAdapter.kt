@@ -9,13 +9,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.makeup.R
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.loadImageFromUrl
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.onProductClickListener
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.parseHtml
 import com.example.makeup.databinding.ProductsRowLayoutBinding
 import com.example.makeup.models.Products
 import com.example.makeup.models.ProductsItem
 import com.example.makeup.util.ProductsDiffUtil
+import com.example.makeup.util.extensions.loadImageFromUrl
+import com.example.makeup.util.extensions.onProductClickListener
+import com.example.makeup.util.extensions.parseHtml
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
@@ -42,9 +42,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
         with(holder.binding){
             with(currentProducts){
-                onProductClickListener(productsRowLayout, this)
-                parseHtml(descriptionTextView, description)
-                loadImageFromUrl(productImageView, imageLink)
+                productsRowLayout.onProductClickListener(this)
+                descriptionTextView.parseHtml(description)
+                productImageView.loadImageFromUrl(imageLink)
                 nameTextView.text = name
                 applyColor(leafImageView, tagList!!.contains("Vegan"))
                 applyColor(leafTextView, tagList.contains("Vegan"))

@@ -8,16 +8,14 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.makeup.util.extensions.showSnackBar
 import com.example.makeup.R
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.loadImageFromUrl
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.parseHtml
 import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.databinding.FavoriteProductsRowLayoutBinding
 import com.example.makeup.ui.fragments.favorites.FavoriteProductsFragmentDirections
 import com.example.makeup.util.ProductsDiffUtil
+import com.example.makeup.util.extensions.loadImageFromUrl
+import com.example.makeup.util.extensions.parseHtml
 import com.example.makeup.viewmodels.MainViewModel
-import com.google.android.material.snackbar.Snackbar
 
 class FavoriteProductsAdapter(
     private val requireActivity: FragmentActivity,
@@ -55,9 +53,10 @@ class FavoriteProductsAdapter(
 
         with(holder.binding) {
             with(favoriteProducts[position].productsItem) {
-                loadImageFromUrl(favoriteProductImageView, imageLink)
-                parseHtml(favoriteDescriptionTextView, description)
+                favoriteProductImageView.loadImageFromUrl(imageLink)
+                favoriteDescriptionTextView.parseHtml(description)
                 favoriteNameTextView.text = name.toString()
+
                 applyColor(
                     favoriteLeafImageView,
                     tagList!!.contains(rootView.resources.getString(R.string.vegan))
@@ -174,11 +173,11 @@ class FavoriteProductsAdapter(
             selectedProducts.forEach {
                 mainViewModel.deleteFavoriteProduct(it)
             }
-            showSnackBar(
-                rootView,
-                "${selectedProducts.size} Product/s removed.",
-                "Okay",
-            )
+//            showSnackBar(
+//                rootView,
+//                "${selectedProducts.size} Product/s removed.",
+//                "Okay",
+//            )
             multiSelection = false
             selectedProducts.clear()
             actionMode?.finish()
@@ -241,14 +240,14 @@ class FavoriteProductsAdapter(
         }
     }
 
-    fun showSnackBar(view: View, message: String, setActionMode: String) {
-        Snackbar.make(
-            view,
-            message,
-            Snackbar.LENGTH_SHORT
-        ).setAction(setActionMode) {}
-            .show()
-    }
+//    fun showSnackBar(view: View, message: String, setActionMode: String) {
+//        Snackbar.make(
+//            view,
+//            message,
+//            Snackbar.LENGTH_SHORT
+//        ).setAction(setActionMode) {}
+//            .show()
+//    }
 
 
 }

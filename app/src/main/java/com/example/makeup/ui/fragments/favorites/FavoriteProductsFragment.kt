@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.makeup.util.extensions.showSnackBar
 import com.example.makeup.R
 import com.example.makeup.adapters.FavoriteProductsAdapter
-import com.example.makeup.bindingadapters.FavoriteProductsBinding.Companion.setVisibility
 import com.example.makeup.databinding.FragmentFavoriteProductsBinding
+import com.example.makeup.util.extensions.setVisibility
 import com.example.makeup.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,8 +34,9 @@ class FavoriteProductsFragment : Fragment() {
 
         mainViewModel.readFavoriteProducts.observe(viewLifecycleOwner) { favoritesEntity ->
             mAdapter.setData(favoritesEntity)
-            setVisibility(binding.noDataImageView, favoritesEntity, mAdapter)
-            setVisibility(binding.noDataTextView, favoritesEntity, mAdapter)
+
+            binding.noDataImageView.setVisibility(favoritesEntity, mAdapter)
+            binding.noDataTextView.setVisibility(favoritesEntity, mAdapter)
 
         }
 

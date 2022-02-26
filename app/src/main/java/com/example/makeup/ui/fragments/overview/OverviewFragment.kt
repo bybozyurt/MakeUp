@@ -9,11 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.example.makeup.R
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.loadImageFromUrl
-import com.example.makeup.bindingadapters.ProductsRowBinding.Companion.parseHtml
 import com.example.makeup.databinding.FragmentOverviewBinding
 import com.example.makeup.models.ProductsItem
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
+import com.example.makeup.util.extensions.loadImageFromUrl
+import com.example.makeup.util.extensions.parseHtml
 import kotlinx.android.synthetic.main.fragment_overview.*
 
 class OverviewFragment : Fragment() {
@@ -57,9 +57,9 @@ class OverviewFragment : Fragment() {
 
     private fun setupBinding(){
         with(binding) {
-            loadImageFromUrl(mainImageView, productsItem.imageLink)
+            mainImageView.loadImageFromUrl(productsItem.imageLink)
             titleTextView.text = productsItem.name
-            parseHtml(binding.descriptionTextView, productsItem.description)
+            binding.descriptionTextView.parseHtml(productsItem.description)
         }
 
     }

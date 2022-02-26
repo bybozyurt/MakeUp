@@ -3,7 +3,6 @@ package com.example.makeup.ui.fragments.products
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -14,10 +13,10 @@ import com.example.makeup.util.extensions.toast
 import com.example.makeup.util.extensions.observeOnce
 import com.example.makeup.R
 import com.example.makeup.adapters.ProductsAdapter
-import com.example.makeup.bindingadapters.ProductsBinding.Companion.handleReadDataErrors
 import com.example.makeup.databinding.FragmentProductsBinding
 import com.example.makeup.util.NetworkListener
 import com.example.makeup.util.NetworkResult
+import com.example.makeup.util.extensions.handleReadDataErrors
 import com.example.makeup.viewmodels.MainViewModel
 import com.example.makeup.viewmodels.ProductsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,8 +57,8 @@ class ProductsFragment : Fragment() {
         navigateBottomSheet()
 
         mainViewModel.pairMediatorLiveData.observe(viewLifecycleOwner) { (productsResponse, readProducts) ->
-            handleReadDataErrors(binding.errorImageView, productsResponse, readProducts)
-            handleReadDataErrors(binding.errorTextView, productsResponse, readProducts)
+            binding.errorImageView.handleReadDataErrors(productsResponse, readProducts)
+            binding.errorTextView.handleReadDataErrors(productsResponse, readProducts)
 
         }
 
