@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class ProductsFragment : Fragment(), SearchView.OnQueryTextListener {
+class ProductsFragment : Fragment() {
 
     private val args by navArgs<ProductsFragmentArgs>()
 
@@ -51,13 +51,11 @@ class ProductsFragment : Fragment(), SearchView.OnQueryTextListener {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true)
         setupRecyclerView()
         readDatabase()
         readBackOnline()
         checkNetworkStatus()
         navigateBottomSheet()
-
 
         mainViewModel.pairMediatorLiveData.observe(viewLifecycleOwner) { (productsResponse, readProducts) ->
             handleReadDataErrors(binding.errorImageView, productsResponse, readProducts)
@@ -161,56 +159,6 @@ class ProductsFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun hideShimmerEffect() {
         binding.recyclerview.hideShimmer()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.products_menu, menu)
-        val search = menu.findItem(R.id.menu_search)
-        val searchView = search.actionView as? SearchView
-        searchView?.queryHint = resources.getString(R.string.search_by_tag)
-        searchView?.isSubmitButtonEnabled = true
-        searchView?.setOnQueryTextListener(this)
-    }
-
-
-    override fun onQueryTextSubmit(query: String?): Boolean {
-        query?.let {
-            searchApiData(query)
-        }
-        return true
-    }
-
-    override fun onQueryTextChange(query: String?): Boolean {
-        return true
-    }
-
-
-    private fun searchApiData(searchQuery: String) {
-        showShimmerEffect()
-        mainViewModel.getSearchProducts(productsViewModel.applySearchQuery(searchQuery))
-        Log.e("ahmeta",searchQuery)
-        mainViewModel.searchedProductsResponse.observe(viewLifecycleOwner) { response ->
-            when(response){
-                is NetworkResult.Success -> {
-                    hideShimmerEffect()
-                    response.data?.let {
-                        mAdapter.setData(it)
-                    }
-                    productsViewModel.saveBrandAndCategory()
-                }
-                is NetworkResult.Error -> {
-                    hideShimmerEffect()
-                    loadDataFromCache()
-                    toast(requireContext(), response.message.toString())
-                }
-                is NetworkResult.Loading -> {
-                    showShimmerEffect()
-                }
-
-            }
-
-        }
-
     }
 
 

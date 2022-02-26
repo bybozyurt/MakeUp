@@ -367,11 +367,11 @@
         android:id="@+id/onlyTagsSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:text="Only Tags"
-        app:layout_constraintBottom_toBottomOf="@+id/brand_txt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/brand_txt"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 

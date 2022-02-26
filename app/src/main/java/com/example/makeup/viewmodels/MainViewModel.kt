@@ -51,7 +51,6 @@ class MainViewModel @Inject constructor(
 
     var productsResponse: MutableLiveData<NetworkResult<Products>> = MutableLiveData()
     var productsResponse2: MutableLiveData<NetworkResult<Products>> = productsResponse
-    var searchedProductsResponse: MutableLiveData<NetworkResult<Products>> = MutableLiveData()
 
     val pairMediatorLiveData = PairMediatorLiveData(productsResponse2, readProducts2)
 
@@ -59,25 +58,6 @@ class MainViewModel @Inject constructor(
         getProductsSafeCall(queries)
     }
 
-    fun getSearchProducts(queries: Map<String, String>) = viewModelScope.launch {
-        searchProductsSafeCall(queries)
-    }
-
-    private suspend fun searchProductsSafeCall(queries: Map<String, String>) {
-        searchedProductsResponse.value = NetworkResult.Loading()
-        if (hasInternetConnection()) {
-            try {
-                val response = repository.remote.searchProducts(queries)
-                searchedProductsResponse.value = handleProductsResponse(response)
-
-            } catch (e: Exception) {
-                searchedProductsResponse.value = NetworkResult.Error("Products not found")
-            }
-        } else {
-            searchedProductsResponse.value = NetworkResult.Error("No Internet Connection")
-        }
-
-    }
 
     private suspend fun getProductsSafeCall(queries: Map<String, String>) {
         productsResponse.value = NetworkResult.Loading()

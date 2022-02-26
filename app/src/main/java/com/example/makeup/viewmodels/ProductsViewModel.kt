@@ -86,18 +86,6 @@ class ProductsViewModel @Inject constructor(
         return queries
     }
 
-
-    fun applySearchQuery(searchQuery: String): HashMap<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-
-        queries[QUERY_TAGS] = searchQuery
-
-        return queries
-
-
-    }
-
-
     fun saveBackOnline(backOnline: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveBackOnline(backOnline)

@@ -15,14 +15,10 @@ import com.example.makeup.databinding.FragmentProductBottomSheetBinding
 import com.example.makeup.util.Constants.Companion.DEFAULT_BRAND
 import com.example.makeup.util.Constants.Companion.DEFAULT_CATEGORY
 import com.example.makeup.util.Constants.Companion.DEFAULT_TAGS
-import com.example.makeup.util.Constants.Companion.KEY_BRAND
-import com.example.makeup.util.Constants.Companion.KEY_CATEGORY
-import com.example.makeup.util.Constants.Companion.PREFS_FILENAME
 import com.example.makeup.viewmodels.ProductsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import kotlinx.android.synthetic.main.fragment_product_bottom_sheet.view.*
 import java.util.*
 
 
