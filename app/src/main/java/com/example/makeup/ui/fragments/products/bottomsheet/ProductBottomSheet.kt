@@ -1,8 +1,5 @@
 package com.example.makeup.ui.fragments.products.bottomsheet
 
-import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater

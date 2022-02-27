@@ -14,7 +14,6 @@ import com.example.makeup.models.ProductsItem
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
 import com.example.makeup.util.extensions.loadImageFromUrl
 import com.example.makeup.util.extensions.parseHtml
-import kotlinx.android.synthetic.main.fragment_overview.*
 
 class OverviewFragment : Fragment() {
 
@@ -31,21 +30,53 @@ class OverviewFragment : Fragment() {
         initBundle()
         setupBinding()
 
-        with(productsItem.tagList!!){
-            with(binding){
-                updateColors(contains("Organic"), organicTextView, organicImageView)
-                updateColors(contains("Vegan"), veganTextView, veganImageView)
-                updateColors(contains("Canadian"), canadianFreeTextView, canadianFreeImageView)
-                updateColors(contains("Gluten Free"), glutenFreeTextView, glutenFreeImageView)
-                updateColors(contains("Natural"), natTextView, binding.natImageView)
-                updateColors(contains("cruelty free"), crueltyFreeTextView, crueltyFreeImageView)
-                updateColors(contains("Hypoallergenic"), hypoAllergenicTextView, hypoAllergenicImageView)
-                updateColors(contains("EWG Verified"), ewgTextView, ewgImageView)
-
+        with(productsItem.tagList!!) {
+            with(binding) {
+                with(resources) {
+                    updateColors(
+                        contains(getString(R.string.organic)),
+                        organicTextView,
+                        organicImageView
+                    )
+                    updateColors(
+                        contains(getString(R.string.vegan)),
+                        veganTextView,
+                        veganImageView
+                    )
+                    updateColors(
+                        contains(getString(R.string.canadian)),
+                        canadianFreeTextView,
+                        canadianFreeImageView
+                    )
+                    updateColors(
+                        contains(getString(R.string.gluten_free)),
+                        glutenFreeTextView,
+                        glutenFreeImageView
+                    )
+                    updateColors(
+                        contains(getString(R.string.natural)),
+                        natTextView,
+                        binding.natImageView
+                    )
+                    updateColors(
+                        contains(getString(R.string.cruelty_free_query)),
+                        crueltyFreeTextView,
+                        crueltyFreeImageView
+                    )
+                    updateColors(
+                        contains(getString(R.string.hypoallergenic)),
+                        hypoAllergenicTextView,
+                        hypoAllergenicImageView
+                    )
+                    updateColors(
+                        contains(getString(R.string.ewg_verified)),
+                        ewgTextView,
+                        ewgImageView
+                    )
+                }
             }
 
         }
-
 
         return binding.root
     }
@@ -55,7 +86,7 @@ class OverviewFragment : Fragment() {
         productsItem = args!!.getParcelable<ProductsItem>(PRODUCTS_BUNDLE_KEY) as ProductsItem
     }
 
-    private fun setupBinding(){
+    private fun setupBinding() {
         with(binding) {
             mainImageView.loadImageFromUrl(productsItem.imageLink)
             titleTextView.text = productsItem.name
@@ -67,10 +98,9 @@ class OverviewFragment : Fragment() {
 
     private fun updateColors(stateIsOn: Boolean, textView: TextView, imageView: ImageView) {
         if (stateIsOn) {
-            imageView.setColorFilter(ContextCompat.getColor(requireContext(),R.color.green))
+            imageView.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
             textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
-        }
-        else {
+        } else {
             imageView.setColorFilter(ContextCompat.getColor(requireContext(), R.color.darkGray))
             textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.darkGray))
         }

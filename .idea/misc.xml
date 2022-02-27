@@ -9,10 +9,11 @@
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_ewg_verified.xml" value="0.3828125" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_filter.xml" value="0.3828125" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_gluten_free.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2205" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_leaf.xml" value="0.3828125" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_makeup.xml" value="0.27314814814814814" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_natural.xml" value="0.3828125" />
-        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_sad.xml" value="0.3828125" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_sad.xml" value="0.2" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/drawable/ic_star.xml" value="0.27314814814814814" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/layout/activity_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
@@ -37,6 +38,7 @@
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/menu/favorite_contextual_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/menu/products_favorite_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/menu/products_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Ahmet/AndroidStudioProjects/MakeUp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2205" />
       </map>
     </option>
   </component>

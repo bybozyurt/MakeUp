@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.makeup.R
 import com.example.makeup.adapters.ColorsAdapter
 import com.example.makeup.databinding.FragmentColorsBinding
-import com.example.makeup.models.ProductColor
 import com.example.makeup.models.ProductsItem
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
 

@@ -42,12 +42,13 @@
     <string name="water_free">Water Free</string>
     <string name="hypoallergenic">Hypoallergenic</string>
     <string name="cruelty_free">Cruelty Free</string>
+    <string name="cruelty_free_query">cruelty free</string>
     <string name="colors_not_found">Colors Not Found.</string>
     <string name="save">Save</string>
     <string name="no_favorite_products">No Favorite Products</string>
     <string name="delete_all">Delete All</string>
     <string name="delete_favorite_menu">Delete Favorite Menu</string>
-    <string name="ewg_verified">Ewg Verified</string>
+    <string name="ewg_verified">EWG Verified</string>
     <string name="brand_and_category">Brand And Category</string>
     <string name="only_tag">Only Tag</string>
 </resources>
