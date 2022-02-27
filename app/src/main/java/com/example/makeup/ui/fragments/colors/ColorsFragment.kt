@@ -10,6 +10,7 @@ import com.example.makeup.adapters.ColorsAdapter
 import com.example.makeup.databinding.FragmentColorsBinding
 import com.example.makeup.models.ProductsItem
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
+import com.example.makeup.util.extensions.show
 
 
 class ColorsFragment : Fragment() {
@@ -28,8 +29,6 @@ class ColorsFragment : Fragment() {
         setupRecyclerView()
         initBundle()
 
-
-
         return binding.root
     }
 
@@ -47,8 +46,8 @@ class ColorsFragment : Fragment() {
         myBundle?.productColors?.let {
             mAdapter.setData(it)
             if (it.isNullOrEmpty()){
-                binding.errorImageView.visibility = View.VISIBLE
-                binding.errorTextView.visibility = View.VISIBLE
+                binding.errorImageView.show()
+                binding.errorTextView.show()
             }
         }
     }

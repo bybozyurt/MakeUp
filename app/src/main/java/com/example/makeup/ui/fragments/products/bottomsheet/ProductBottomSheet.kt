@@ -12,6 +12,8 @@ import com.example.makeup.databinding.FragmentProductBottomSheetBinding
 import com.example.makeup.util.Constants.Companion.DEFAULT_BRAND
 import com.example.makeup.util.Constants.Companion.DEFAULT_CATEGORY
 import com.example.makeup.util.Constants.Companion.DEFAULT_TAGS
+import com.example.makeup.util.extensions.gone
+import com.example.makeup.util.extensions.show
 import com.example.makeup.viewmodels.ProductsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
@@ -64,19 +66,19 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
         binding.onlyTagsSwitch.setOnCheckedChangeListener { _, isChecked ->
             isCheckedControl = isChecked
             if (isCheckedControl) {
-                binding.categoryTxt.visibility = View.GONE
-                binding.categoryChipGroup.visibility = View.GONE
-                binding.brandTxt.visibility = View.GONE
-                binding.brandChipGroup.visibility = View.GONE
-                binding.tagsTxt.visibility = View.VISIBLE
-                binding.tagsChipGroup.visibility = View.VISIBLE
+                binding.categoryTxt.gone()
+                binding.categoryChipGroup.gone()
+                binding.brandTxt.gone()
+                binding.brandChipGroup.gone()
+                binding.tagsTxt.show()
+                binding.tagsChipGroup.show()
             } else {
-                binding.tagsChipGroup.visibility = View.GONE
-                binding.tagsTxt.visibility = View.GONE
-                binding.categoryTxt.visibility = View.VISIBLE
-                binding.categoryChipGroup.visibility = View.VISIBLE
-                binding.brandTxt.visibility = View.VISIBLE
-                binding.brandChipGroup.visibility = View.VISIBLE
+                binding.tagsChipGroup.gone()
+                binding.tagsTxt.gone()
+                binding.categoryTxt.show()
+                binding.categoryChipGroup.show()
+                binding.brandTxt.show()
+                binding.brandChipGroup.show()
 
             }
         }
