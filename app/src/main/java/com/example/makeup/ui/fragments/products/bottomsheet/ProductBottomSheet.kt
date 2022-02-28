@@ -150,7 +150,6 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
                 tagChipId,
                 isCheckedControl
             )
-            Log.e("şahin", brandChip + "--" + categoryChip)
 
             val action =
                 ProductBottomSheetDirections.actionProductBottomSheetToProductsFragment(true)

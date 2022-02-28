@@ -71,10 +71,7 @@ class ProductsViewModel @Inject constructor(
             if (!brandAndCategory.checkedControl) {
                 queries[QUERY_BRAND] = brandAndCategory.selectedBrand
                 queries[QUERY_PRODUCT_TYPE] = brandAndCategory.selectedCategory
-                Log.e(
-                    "şahinbaba",
-                    brandAndCategory.selectedBrand + "-----" + brandAndCategory.selectedCategory
-                )
+
             } else {
                 queries[QUERY_TAGS] = brandAndCategory.selectedTag
             }
