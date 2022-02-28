@@ -1,5 +1,4 @@
-# MakeUp
-Cosmetic products application
+# **MakeUp**
 
 <p float="left">
  <img src="https://user-images.githubusercontent.com/51344498/156014735-0bf0b674-76c5-4f11-bd99-50aa4bb489ef.png" width="400" height="800" />
