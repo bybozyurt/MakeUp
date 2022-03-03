@@ -91,7 +91,7 @@
         android:id="@+id/gluten_free_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="65dp"
         android:src="@drawable/ic_checkmark"
         app:layout_constraintBottom_toBottomOf="@+id/nat_textView"
         app:layout_constraintStart_toEndOf="@+id/nat_textView"
@@ -157,11 +157,10 @@
         android:id="@+id/hypoAllergenic_imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:src="@drawable/ic_checkmark"
-        app:layout_constraintBottom_toBottomOf="@+id/gluten_free_imageView"
-        app:layout_constraintStart_toEndOf="@+id/gluten_free_textView"
-        app:layout_constraintTop_toTopOf="@+id/gluten_free_textView"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/canadianFree_imageView"
+        app:layout_constraintTop_toBottomOf="@id/canadianFree_imageView"
         app:tint="@color/darkGray" />
 
     <TextView
@@ -181,8 +180,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:src="@drawable/ic_checkmark"
-        app:layout_constraintStart_toStartOf="@+id/hypoAllergenic_imageView"
-        app:layout_constraintTop_toBottomOf="@+id/hypoAllergenic_imageView"
+        app:layout_constraintStart_toStartOf="@+id/ewg_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/ewg_imageView"
         app:tint="@color/darkGray" />
 
     <TextView
@@ -230,7 +229,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/canadianFree_imageView"
+        app:layout_constraintTop_toBottomOf="@id/hypoAllergenic_imageView"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
