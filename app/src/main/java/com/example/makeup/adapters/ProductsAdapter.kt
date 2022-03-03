@@ -48,7 +48,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
             with(currentProducts) {
                 productsRowLayout.onProductClickListener(this)
                 descriptionTextView.parseHtml(description)
-                productImageView.loadImageFromUrl(imageLink)
+                imageLink?.let { productImageView.loadImageFromUrl(it) }
                 nameTextView.text = name
                 updateColors(
                     tagList!!.contains(rootView.resources.getString(R.string.vegan)),

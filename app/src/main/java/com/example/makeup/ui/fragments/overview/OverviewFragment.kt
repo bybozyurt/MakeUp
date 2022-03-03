@@ -88,7 +88,7 @@ class OverviewFragment : Fragment() {
 
     private fun setupBinding() {
         with(binding) {
-            mainImageView.loadImageFromUrl(productsItem.imageLink)
+            productsItem.imageLink?.let { mainImageView.loadImageFromUrl(it) }
             titleTextView.text = productsItem.name
             binding.descriptionTextView.parseHtml(productsItem.description)
         }

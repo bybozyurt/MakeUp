@@ -53,7 +53,7 @@ class FavoriteProductsAdapter(
 
         with(holder.binding) {
             with(favoriteProducts[position].productsItem) {
-                favoriteProductImageView.loadImageFromUrl(imageLink)
+                imageLink?.let { favoriteProductImageView.loadImageFromUrl(it) }
                 favoriteDescriptionTextView.parseHtml(description)
                 favoriteNameTextView.text = name.toString()
 

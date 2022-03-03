@@ -16,7 +16,7 @@ data class ProductsItem(
     @SerializedName("id")
     val productId: Int,
     @SerializedName("image_link")
-    val imageLink: String,
+    val imageLink: String?,
     @SerializedName("name")
     val name: String?,
     @SerializedName("product_colors")
