@@ -9,7 +9,7 @@ import com.example.makeup.databinding.CustomSnackbarBinding
 import com.google.android.material.snackbar.Snackbar
 
 
-fun Context.showCustomSnackBar(message: String, container: View?) {
+fun Context.showCustomSnackBar(message: String, container: View?, icon: String) {
     container?.let {
         val snackView = View.inflate(this, R.layout.custom_snackbar, null)
         val binding = CustomSnackbarBinding.bind(snackView)
@@ -17,6 +17,14 @@ fun Context.showCustomSnackBar(message: String, container: View?) {
         snackBar.apply {
             (view as ViewGroup).addView(binding.root)
             binding.tvMessage.text = message
+            if (icon == "save") {
+                binding.imgDelete.hide()
+                binding.imgSave.show()
+            }
+            else if (icon == "delete") {
+                binding.imgSave.hide()
+                binding.imgDelete.show()
+            }
             show()
         }
     }

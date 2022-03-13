@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
-import com.example.makeup.util.extensions.showSnackBar
 import com.example.makeup.R
 import com.example.makeup.adapters.PagerAdapter
 import com.example.makeup.data.database.entities.FavoritesEntity
@@ -130,7 +129,7 @@ class DetailsActivity : AppCompatActivity() {
         val favoritesEntity = FavoritesEntity(savedProductId, args.productsItem)
         mainViewModel.deleteFavoriteProduct(favoritesEntity)
         changeMenuItemColor(item, R.color.white)
-        showCustomSnackBar("Removed from Favorites.", binding.detailsLayout)
+        showCustomSnackBar("Removed from Favorites.", binding.detailsLayout,"delete")
         productSaved = false
     }
 
@@ -140,7 +139,7 @@ class DetailsActivity : AppCompatActivity() {
         )
         mainViewModel.insertFavoriteProducts(favoritesEntity)
         changeMenuItemColor(item, R.color.red)
-        showCustomSnackBar("Product saved.", binding.detailsLayout)
+        showCustomSnackBar("Product saved.", binding.detailsLayout, "save")
         productSaved = true
     }
 }

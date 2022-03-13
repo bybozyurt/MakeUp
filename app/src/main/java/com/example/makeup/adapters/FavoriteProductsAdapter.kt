@@ -167,7 +167,7 @@ class FavoriteProductsAdapter(
         if (menu?.itemId == R.id.delete_favorite_products_menu) {
             selectedProducts.forEach {
                 mainViewModel.deleteFavoriteProduct(it)
-                requireActivity.showCustomSnackBar("${selectedProducts.size} item/s deleted", rootView)
+                requireActivity.showCustomSnackBar("${selectedProducts.size} item/s deleted", rootView, "delete")
             }
             multiSelection = false
             selectedProducts.clear()
