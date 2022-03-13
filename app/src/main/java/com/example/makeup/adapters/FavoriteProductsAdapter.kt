@@ -15,6 +15,7 @@ import com.example.makeup.ui.fragments.favorites.FavoriteProductsFragmentDirecti
 import com.example.makeup.util.ProductsDiffUtil
 import com.example.makeup.util.extensions.loadImageFromUrl
 import com.example.makeup.util.extensions.parseHtml
+import com.example.makeup.util.extensions.showCustomSnackBar
 import com.example.makeup.viewmodels.MainViewModel
 
 class FavoriteProductsAdapter(
@@ -166,6 +167,7 @@ class FavoriteProductsAdapter(
         if (menu?.itemId == R.id.delete_favorite_products_menu) {
             selectedProducts.forEach {
                 mainViewModel.deleteFavoriteProduct(it)
+                requireActivity.showCustomSnackBar("${selectedProducts.size} item/s deleted", rootView)
             }
             multiSelection = false
             selectedProducts.clear()

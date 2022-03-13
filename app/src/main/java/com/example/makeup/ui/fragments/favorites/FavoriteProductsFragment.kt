@@ -10,6 +10,7 @@ import com.example.makeup.R
 import com.example.makeup.adapters.FavoriteProductsAdapter
 import com.example.makeup.databinding.FragmentFavoriteProductsBinding
 import com.example.makeup.util.extensions.setVisibility
+import com.example.makeup.util.extensions.showCustomSnackBar
 import com.example.makeup.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -52,7 +53,7 @@ class FavoriteProductsFragment : Fragment() {
         if (item.itemId == R.id.deleteAll_favorite_products_menu)
         {
             mainViewModel.deleteAllFavoriteProducts()
-            showSnackBar("All Products Removed.", "Okay", binding.root)
+            requireActivity().showCustomSnackBar("All Products Removed.", binding.root)
         }
         return super.onOptionsItemSelected(item)
 

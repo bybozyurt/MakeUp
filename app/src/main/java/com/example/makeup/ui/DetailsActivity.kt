@@ -21,6 +21,7 @@ import com.example.makeup.util.Constants.Companion.COLORS_FRAGMENT
 import com.example.makeup.util.Constants.Companion.WEBSITE_FRAGMENT
 import com.example.makeup.util.Constants.Companion.OVERVIEW_FRAGMENT
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
+import com.example.makeup.util.extensions.showCustomSnackBar
 import com.example.makeup.viewmodels.MainViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -129,7 +130,7 @@ class DetailsActivity : AppCompatActivity() {
         val favoritesEntity = FavoritesEntity(savedProductId, args.productsItem)
         mainViewModel.deleteFavoriteProduct(favoritesEntity)
         changeMenuItemColor(item, R.color.white)
-        showSnackBar("Removed from Favorites.", "Okay", binding.detailsLayout)
+        showCustomSnackBar("Removed from Favorites.", binding.detailsLayout)
         productSaved = false
     }
 
@@ -139,7 +140,7 @@ class DetailsActivity : AppCompatActivity() {
         )
         mainViewModel.insertFavoriteProducts(favoritesEntity)
         changeMenuItemColor(item, R.color.red)
-        showSnackBar("Product saved.", "Okay", binding.detailsLayout)
+        showCustomSnackBar("Product saved.", binding.detailsLayout)
         productSaved = true
     }
 }
