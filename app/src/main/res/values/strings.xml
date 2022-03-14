@@ -50,5 +50,5 @@
     <string name="delete_favorite_menu">Delete Favorite Menu</string>
     <string name="ewg_verified">EWG Verified</string>
     <string name="brand_and_category">Brand And Category</string>
-    <string name="only_tag">Only Tag</string>
+    <string name="only_tags">Only Tags</string>
 </resources>

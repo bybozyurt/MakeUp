@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
+import com.example.makeup.R
 import com.example.makeup.databinding.FragmentProductBottomSheetBinding
 import com.example.makeup.util.Constants.Companion.DEFAULT_BRAND
 import com.example.makeup.util.Constants.Companion.DEFAULT_CATEGORY
@@ -40,7 +41,8 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        productViewModel = ViewModelProvider(requireActivity()).get(ProductsViewModel::class.java)
+        setStyle(STYLE_NORMAL, R.style.AppBottomSheetDialogTheme)
+        productViewModel = ViewModelProvider(requireActivity())[ProductsViewModel::class.java]
     }
 
     override fun onCreateView(

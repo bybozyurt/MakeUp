@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/ic_bottom_sheet"
     tools:context=".ui.fragments.products.bottomsheet.ProductBottomSheet">
 
 
@@ -369,7 +369,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:text="Only Tags"
+        android:theme="@style/SwitchCompatTheme"
+        android:text="@string/only_tags"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
