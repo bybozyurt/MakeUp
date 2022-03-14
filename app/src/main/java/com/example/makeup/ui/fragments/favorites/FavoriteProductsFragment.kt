@@ -17,7 +17,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavoriteProductsFragment : Fragment() {
 
     private val mainViewModel: MainViewModel by viewModels()
-    private val mAdapter: FavoriteProductsAdapter by lazy { FavoriteProductsAdapter(requireActivity(), mainViewModel) }
+    private val mAdapter: FavoriteProductsAdapter by lazy {
+        FavoriteProductsAdapter(
+            requireActivity(),
+            mainViewModel
+        )
+    }
 
     private var _binding: FragmentFavoriteProductsBinding? = null
     private val binding get() = _binding!!
@@ -49,10 +54,13 @@ class FavoriteProductsFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.deleteAll_favorite_products_menu)
-        {
+        if (item.itemId == R.id.deleteAll_favorite_products_menu) {
             mainViewModel.deleteAllFavoriteProducts()
-            requireActivity().showCustomSnackBar("All Products Removed.", binding.root,"delete")
+            requireActivity().showCustomSnackBar(
+                getString(R.string.all_products_removed),
+                binding.root,
+                getString(R.string.icon_delete)
+            )
         }
         return super.onOptionsItemSelected(item)
 
@@ -60,7 +68,7 @@ class FavoriteProductsFragment : Fragment() {
 
 
     private fun setupRecyclerView() {
-        with(binding.favoriteProductsRecyclerView){
+        with(binding.favoriteProductsRecyclerView) {
             adapter = mAdapter
             layoutManager = LinearLayoutManager(requireContext())
             itemAnimator = null

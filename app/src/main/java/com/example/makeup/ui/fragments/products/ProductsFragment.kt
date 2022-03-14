@@ -40,14 +40,14 @@ class ProductsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        productsViewModel = ViewModelProvider(requireActivity()).get(ProductsViewModel::class.java)
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        productsViewModel = ViewModelProvider(requireActivity())[ProductsViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         setupRecyclerView()
@@ -89,7 +89,6 @@ class ProductsFragment : Fragment() {
 
 
     private fun requestApiData() {
-        Log.e("ahmet", "data from api")
         mainViewModel.getProducts(productsViewModel.applyQueries())
         mainViewModel.productsResponse.observe(viewLifecycleOwner) { response ->
             when (response) {

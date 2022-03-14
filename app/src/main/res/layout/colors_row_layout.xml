@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:fontFamily="@font/autour_one"
-                android:text="Color"
+                android:text="@string/color"
                 android:textColor="@color/titleColor"
                 android:textSize="20sp"
                 android:textStyle="bold"

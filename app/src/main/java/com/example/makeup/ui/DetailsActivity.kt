@@ -17,9 +17,11 @@ import com.example.makeup.ui.fragments.colors.ColorsFragment
 import com.example.makeup.ui.fragments.instructions.WebsiteFragment
 import com.example.makeup.ui.fragments.overview.OverviewFragment
 import com.example.makeup.util.Constants.Companion.COLORS_FRAGMENT
+import com.example.makeup.util.Constants.Companion.DELETE_ICON
 import com.example.makeup.util.Constants.Companion.WEBSITE_FRAGMENT
 import com.example.makeup.util.Constants.Companion.OVERVIEW_FRAGMENT
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
+import com.example.makeup.util.Constants.Companion.SAVE_ICON
 import com.example.makeup.util.extensions.showCustomSnackBar
 import com.example.makeup.viewmodels.MainViewModel
 import com.google.android.material.tabs.TabLayoutMediator
@@ -35,6 +37,8 @@ class DetailsActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
     private var productSaved = false
     private var savedProductId = 0
+
+    private lateinit var menuItem: MenuItem
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,8 +88,8 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.details_menu, menu)
-        val menuItem = menu?.findItem(R.id.save_to_favorites_menu)
-        checkSavedProducts(menuItem!!)
+        menuItem = menu!!.findItem(R.id.save_to_favorites_menu)
+        checkSavedProducts(menuItem)
         return true
     }
 
@@ -97,9 +101,6 @@ class DetailsActivity : AppCompatActivity() {
                         changeMenuItemColor(menuItem, R.color.red)
                         savedProductId = savedProduct.id
                         productSaved = true
-                        break
-                    } else {
-                        changeMenuItemColor(menuItem, R.color.white)
                     }
                 }
             } catch (e: Exception) {
@@ -129,7 +130,8 @@ class DetailsActivity : AppCompatActivity() {
         val favoritesEntity = FavoritesEntity(savedProductId, args.productsItem)
         mainViewModel.deleteFavoriteProduct(favoritesEntity)
         changeMenuItemColor(item, R.color.white)
-        showCustomSnackBar("Removed from Favorites.", binding.detailsLayout,"delete")
+        showCustomSnackBar(getString(R.string.remove_from_favorites), binding.detailsLayout,
+            DELETE_ICON)
         productSaved = false
     }
 
@@ -139,7 +141,14 @@ class DetailsActivity : AppCompatActivity() {
         )
         mainViewModel.insertFavoriteProducts(favoritesEntity)
         changeMenuItemColor(item, R.color.red)
-        showCustomSnackBar("Product saved.", binding.detailsLayout, "save")
+        showCustomSnackBar(getString(R.string.product_saved), binding.detailsLayout, SAVE_ICON)
         productSaved = true
     }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        changeMenuItemColor(menuItem, R.color.white)
+    }
+
 }

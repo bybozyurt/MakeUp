@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.makeup.R
 import com.example.makeup.databinding.CustomSnackbarBinding
+import com.example.makeup.util.Constants.Companion.DELETE_ICON
+import com.example.makeup.util.Constants.Companion.SAVE_ICON
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -17,11 +19,11 @@ fun Context.showCustomSnackBar(message: String, container: View?, icon: String) 
         snackBar.apply {
             (view as ViewGroup).addView(binding.root)
             binding.tvMessage.text = message
-            if (icon == "save") {
+            if (icon == SAVE_ICON) {
                 binding.imgDelete.hide()
                 binding.imgSave.show()
             }
-            else if (icon == "delete") {
+            else if (icon == DELETE_ICON) {
                 binding.imgSave.hide()
                 binding.imgDelete.show()
             }

@@ -12,6 +12,7 @@ import com.example.makeup.R
 import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.databinding.FavoriteProductsRowLayoutBinding
 import com.example.makeup.ui.fragments.favorites.FavoriteProductsFragmentDirections
+import com.example.makeup.util.Constants.Companion.DELETE_ICON
 import com.example.makeup.util.ProductsDiffUtil
 import com.example.makeup.util.extensions.loadImageFromUrl
 import com.example.makeup.util.extensions.parseHtml
@@ -167,7 +168,11 @@ class FavoriteProductsAdapter(
         if (menu?.itemId == R.id.delete_favorite_products_menu) {
             selectedProducts.forEach {
                 mainViewModel.deleteFavoriteProduct(it)
-                requireActivity.showCustomSnackBar("${selectedProducts.size} item/s deleted", rootView, "delete")
+                requireActivity.showCustomSnackBar(
+                    "${selectedProducts.size} item/s deleted",
+                    rootView,
+                    DELETE_ICON
+                )
             }
             multiSelection = false
             selectedProducts.clear()
@@ -191,12 +196,31 @@ class FavoriteProductsAdapter(
 
     private fun updateColors(stateIsOn: Boolean, textView: TextView, imageView: ImageView) {
         if (stateIsOn) {
-            imageView.setColorFilter(ContextCompat.getColor(rootView.context.applicationContext, R.color.green))
-            textView.setTextColor(ContextCompat.getColor(rootView.context.applicationContext, R.color.green))
-        }
-        else {
-            imageView.setColorFilter(ContextCompat.getColor(rootView.context.applicationContext, R.color.darkGray))
-            textView.setTextColor(ContextCompat.getColor(rootView.context.applicationContext, R.color.darkGray))
+            imageView.setColorFilter(
+                ContextCompat.getColor(
+                    rootView.context.applicationContext,
+                    R.color.green
+                )
+            )
+            textView.setTextColor(
+                ContextCompat.getColor(
+                    rootView.context.applicationContext,
+                    R.color.green
+                )
+            )
+        } else {
+            imageView.setColorFilter(
+                ContextCompat.getColor(
+                    rootView.context.applicationContext,
+                    R.color.darkGray
+                )
+            )
+            textView.setTextColor(
+                ContextCompat.getColor(
+                    rootView.context.applicationContext,
+                    R.color.darkGray
+                )
+            )
         }
 
     }

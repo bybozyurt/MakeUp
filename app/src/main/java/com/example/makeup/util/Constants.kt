@@ -35,7 +35,8 @@ class Constants {
         const val WEBSITE_FRAGMENT = "Website"
         const val COLORS_FRAGMENT = "Colors"
 
-
+        const val DELETE_ICON = "delete"
+        const val SAVE_ICON = "save"
 
 
     }
