@@ -18,7 +18,7 @@ class Constants {
         //BottomSheet and Preferences
         const val DEFAULT_BRAND = "l'oreal"
         const val DEFAULT_CATEGORY = "lipstick"
-        const val DEFAULT_TAGS = "Vegan"
+        const val DEFAULT_TAGS = "Natural"
 
         const val PREFERENCES_NAME = "makeup_preferences"
         const val PREFERENCES_BRAND = "brand"
