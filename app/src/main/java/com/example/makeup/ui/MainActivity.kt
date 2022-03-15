@@ -2,29 +2,31 @@ package com.example.makeup.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.makeup.R
 import com.example.makeup.databinding.ActivityMainBinding
+import com.example.makeup.ui.base.BaseBindingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
-    private lateinit var binding: ActivityMainBinding
+
     private lateinit var navController: NavController
 
+    @LayoutRes
+    override fun getContentViewLayoutResId() = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setTheme(R.style.AppTheme)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun populateUI(savedInstanceState: Bundle?) {
 
-        navController = findNavController(R.id.navHostFragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+        navController = navHostFragment.navController
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.productsFragment,
@@ -32,9 +34,8 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        binding.bottomNavigationView.setupWithNavController(navController)
+        mBinding?.bottomNavigationView?.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -13,6 +13,7 @@ import com.example.makeup.R
 import com.example.makeup.ui.adapters.PagerAdapter
 import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.databinding.ActivityDetailsBinding
+import com.example.makeup.ui.base.BaseBindingActivity
 import com.example.makeup.ui.colors.ColorsFragment
 import com.example.makeup.ui.instructions.WebsiteFragment
 import com.example.makeup.ui.overview.OverviewFragment
@@ -29,9 +30,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
 
 @AndroidEntryPoint
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : BaseBindingActivity<ActivityDetailsBinding>() {
 
-    private lateinit var binding: ActivityDetailsBinding
 
     private val args by navArgs<DetailsActivityArgs>()
     private val mainViewModel: MainViewModel by viewModels()
@@ -40,15 +40,15 @@ class DetailsActivity : AppCompatActivity() {
 
     private lateinit var menuItem: MenuItem
 
+    override fun getContentViewLayoutResId() = R.layout.activity_details
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityDetailsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun populateUI(savedInstanceState: Bundle?) {
+        initUI()
+    }
 
-
-        setSupportActionBar(binding.toolBar)
-        binding.toolBar.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
+    private fun initUI() {
+        setSupportActionBar(mBinding?.toolBar)
+        mBinding?.toolBar?.setTitleTextColor(ContextCompat.getColor(this, R.color.white))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val fragments = ArrayList<Fragment>()
@@ -74,17 +74,16 @@ class DetailsActivity : AppCompatActivity() {
             this
         )
 
-        binding.viewPager2.apply {
+        mBinding!!.viewPager2.apply {
             isUserInputEnabled = false
             adapter = pagerAdapter
         }
 
-        TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
+        TabLayoutMediator(mBinding!!.tabLayout, mBinding!!.viewPager2) { tab, position ->
             tab.text = titles[position]
         }.attach()
-
-
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.details_menu, menu)
@@ -130,7 +129,7 @@ class DetailsActivity : AppCompatActivity() {
         val favoritesEntity = FavoritesEntity(savedProductId, args.productsItem)
         mainViewModel.deleteFavoriteProduct(favoritesEntity)
         changeMenuItemColor(item, R.color.white)
-        showCustomSnackBar(getString(R.string.remove_from_favorites), binding.detailsLayout,
+        showCustomSnackBar(getString(R.string.remove_from_favorites), mBinding?.detailsLayout,
             DELETE_ICON)
         productSaved = false
     }
@@ -141,7 +140,7 @@ class DetailsActivity : AppCompatActivity() {
         )
         mainViewModel.insertFavoriteProducts(favoritesEntity)
         changeMenuItemColor(item, R.color.red)
-        showCustomSnackBar(getString(R.string.product_saved), binding.detailsLayout, SAVE_ICON)
+        showCustomSnackBar(getString(R.string.product_saved), mBinding?.detailsLayout, SAVE_ICON)
         productSaved = true
     }
 
