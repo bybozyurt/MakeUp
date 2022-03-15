@@ -14,6 +14,7 @@ import com.example.makeup.util.extensions.observeOnce
 import com.example.makeup.R
 import com.example.makeup.ui.adapters.ProductsAdapter
 import com.example.makeup.databinding.FragmentProductsBinding
+import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.NetworkListener
 import com.example.makeup.util.NetworkResult
 import com.example.makeup.util.extensions.handleReadDataErrors
@@ -25,12 +26,10 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class ProductsFragment : Fragment() {
+class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
 
     private val args by navArgs<ProductsFragmentArgs>()
 
-    private var _binding: FragmentProductsBinding? = null
-    private val binding get() = _binding!!
     private lateinit var mainViewModel: MainViewModel
     private lateinit var productsViewModel: ProductsViewModel
     private val mAdapter by lazy { ProductsAdapter() }
@@ -43,33 +42,26 @@ class ProductsFragment : Fragment() {
         productsViewModel = ViewModelProvider(requireActivity())[ProductsViewModel::class.java]
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentProductsBinding.inflate(inflater, container, false)
-        setupRecyclerView()
-        readDatabase()
-        readBackOnline()
-        checkNetworkStatus()
-        navigateBottomSheet()
-
+    private fun productResponseAndReadObserve() {
         mainViewModel.pairMediatorLiveData.observe(viewLifecycleOwner) { (productsResponse, readProducts) ->
-            with(binding) {
-                errorImageView.handleReadDataErrors(productsResponse, readProducts)
-                errorTextView.handleReadDataErrors(productsResponse, readProducts)
+            mBinding?.let {
+                with(it) {
+                    errorImageView.handleReadDataErrors(productsResponse, readProducts)
+                    errorTextView.handleReadDataErrors(productsResponse, readProducts)
+                }
             }
-        }
 
-        return binding.root
+        }
     }
 
     private fun setupRecyclerView() {
-        with(binding) {
-            recyclerview.adapter = mAdapter
-            recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        mBinding?.let {
+            with(it) {
+                recyclerview.adapter = mAdapter
+                recyclerview.layoutManager = LinearLayoutManager(requireContext())
+            }
         }
+
         showShimmerEffect()
     }
 
@@ -126,7 +118,7 @@ class ProductsFragment : Fragment() {
     }
 
     private fun navigateBottomSheet() {
-        binding.floatingActionButton.setOnClickListener {
+        mBinding?.floatingActionButton?.setOnClickListener {
             if (productsViewModel.networkStatus) {
                 findNavController().navigate(R.id.action_productsFragment_to_productBottomSheet)
             } else {
@@ -141,8 +133,8 @@ class ProductsFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext())
-                .collect{ status ->
-                    Log.e("NetworkListener",status.toString())
+                .collect { status ->
+                    Log.e("NetworkListener", status.toString())
                     with(productsViewModel) {
                         networkStatus = status
                         showNetworkStatus()
@@ -162,17 +154,27 @@ class ProductsFragment : Fragment() {
     }
 
     private fun showShimmerEffect() {
-        binding.recyclerview.showShimmer()
+        mBinding?.recyclerview?.showShimmer()
     }
 
     private fun hideShimmerEffect() {
-        binding.recyclerview.hideShimmer()
+        mBinding?.recyclerview?.hideShimmer()
     }
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun getContentLayoutResId() = R.layout.fragment_products
+
+    override fun populateUI() {
+        setupRecyclerView()
+        readDatabase()
+        readBackOnline()
+        checkNetworkStatus()
+        navigateBottomSheet()
+        productResponseAndReadObserve()
+    }
+
+    override fun onDestView() {
+        mBinding = null
     }
 
 

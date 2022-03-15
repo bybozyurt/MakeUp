@@ -101,8 +101,13 @@ class DetailsActivity : BaseBindingActivity<ActivityDetailsBinding>() {
                         changeMenuItemColor(menuItem, R.color.red)
                         savedProductId = savedProduct.id
                         productSaved = true
+                        break
                     }
                 }
+                changeMenuItemColor(
+                    menuItem, if (productSaved) R.color.red
+                    else R.color.white
+                )
             } catch (e: Exception) {
                 Log.e("DetailsActivity", e.message.toString())
             }
@@ -130,8 +135,10 @@ class DetailsActivity : BaseBindingActivity<ActivityDetailsBinding>() {
         val favoritesEntity = FavoritesEntity(savedProductId, args.productsItem)
         mainViewModel.deleteFavoriteProduct(favoritesEntity)
         changeMenuItemColor(item, R.color.white)
-        showCustomSnackBar(getString(R.string.remove_from_favorites), mBinding?.detailsLayout,
-            DELETE_ICON)
+        showCustomSnackBar(
+            getString(R.string.remove_from_favorites), mBinding?.detailsLayout,
+            DELETE_ICON
+        )
         productSaved = false
     }
 
