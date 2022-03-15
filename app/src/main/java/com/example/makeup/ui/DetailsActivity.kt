@@ -74,14 +74,16 @@ class DetailsActivity : BaseBindingActivity<ActivityDetailsBinding>() {
             this
         )
 
-        mBinding!!.viewPager2.apply {
+        mBinding?.viewPager2?.apply {
             isUserInputEnabled = false
             adapter = pagerAdapter
         }
 
-        TabLayoutMediator(mBinding!!.tabLayout, mBinding!!.viewPager2) { tab, position ->
-            tab.text = titles[position]
-        }.attach()
+        mBinding?.let {
+            TabLayoutMediator(it.tabLayout, it.viewPager2) { tab, position ->
+                tab.text = titles[position]
+            }.attach()
+        }
     }
 
 
