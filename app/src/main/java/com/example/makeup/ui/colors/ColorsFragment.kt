@@ -15,7 +15,6 @@ class ColorsFragment : BaseBindingFragment<FragmentColorsBinding>() {
     private val mAdapter: ColorsAdapter by lazy { ColorsAdapter() }
     private var productsItem: ProductsItem? = null
 
-
     override fun getContentLayoutResId() = R.layout.fragment_colors
 
     override fun populateUI() {
@@ -25,7 +24,7 @@ class ColorsFragment : BaseBindingFragment<FragmentColorsBinding>() {
 
     private fun setupRecyclerView() {
         mBinding?.let {
-            with(it.colorsRecyclerView){
+            with(it.colorsRecyclerView) {
                 adapter = mAdapter
                 layoutManager = LinearLayoutManager(requireContext())
             }
@@ -33,17 +32,16 @@ class ColorsFragment : BaseBindingFragment<FragmentColorsBinding>() {
 
     }
 
-    private fun initBundle(){
+    private fun initBundle() {
         val args = arguments
         productsItem = args?.getParcelable(PRODUCTS_BUNDLE_KEY)
         productsItem?.productColors?.let {
             mAdapter.setData(it)
-            if (it.isNullOrEmpty()){
+            if (it.isNullOrEmpty()) {
                 mBinding?.apply {
                     errorImageView.show()
                     errorTextView.show()
                 }
-
             }
         }
     }

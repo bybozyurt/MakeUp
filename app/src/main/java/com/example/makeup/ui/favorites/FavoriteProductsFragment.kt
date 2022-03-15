@@ -1,20 +1,19 @@
 package com.example.makeup.ui.favorites
 
-import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.makeup.R
 import com.example.makeup.ui.adapters.FavoriteProductsAdapter
 import com.example.makeup.databinding.FragmentFavoriteProductsBinding
+import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.extensions.setVisibility
 import com.example.makeup.util.extensions.showCustomSnackBar
 import com.example.makeup.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FavoriteProductsFragment : Fragment() {
+class FavoriteProductsFragment : BaseBindingFragment<FragmentFavoriteProductsBinding>() {
 
     private val mainViewModel: MainViewModel by viewModels()
     private val mAdapter: FavoriteProductsAdapter by lazy {
@@ -22,33 +21,6 @@ class FavoriteProductsFragment : Fragment() {
             requireActivity(),
             mainViewModel
         )
-    }
-
-    private var _binding: FragmentFavoriteProductsBinding? = null
-    private val binding get() = _binding!!
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentFavoriteProductsBinding.inflate(layoutInflater, container, false)
-        setHasOptionsMenu(true)
-        binding.lifecycleOwner = this
-        setupRecyclerView()
-
-        mainViewModel.readFavoriteProducts.observe(viewLifecycleOwner) { favoritesEntity ->
-            mAdapter.setData(favoritesEntity)
-
-            with(binding) {
-                noDataImageView.setVisibility(favoritesEntity, mAdapter)
-                noDataTextView.setVisibility(favoritesEntity, mAdapter)
-            }
-
-        }
-
-
-        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -60,7 +32,7 @@ class FavoriteProductsFragment : Fragment() {
             mainViewModel.deleteAllFavoriteProducts()
             requireActivity().showCustomSnackBar(
                 getString(R.string.all_products_removed),
-                binding.root,
+                mBinding?.root,
                 getString(R.string.icon_delete)
             )
         }
@@ -68,19 +40,39 @@ class FavoriteProductsFragment : Fragment() {
 
     }
 
-
     private fun setupRecyclerView() {
-        with(binding.favoriteProductsRecyclerView) {
-            adapter = mAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-            itemAnimator = null
+        mBinding?.let {
+            with(it.favoriteProductsRecyclerView) {
+                adapter = mAdapter
+                layoutManager = LinearLayoutManager(requireContext())
+                itemAnimator = null
+            }
         }
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    fun readFavoriteProductsObserve() {
+        mainViewModel.readFavoriteProducts.observe(viewLifecycleOwner) { favoritesEntity ->
+            mAdapter.setData(favoritesEntity)
+            mBinding?.let {
+                with(it) {
+                    noDataImageView.setVisibility(favoritesEntity, mAdapter)
+                    noDataTextView.setVisibility(favoritesEntity, mAdapter)
+                }
+            }
+        }
+    }
+
+    override fun getContentLayoutResId() = R.layout.fragment_favorite_products
+
+    override fun populateUI() {
+        setHasOptionsMenu(true)
+        setupRecyclerView()
+        readFavoriteProductsObserve()
+    }
+
+    override fun onDestView() {
+        mBinding = null
         mAdapter.clearContextualActionMode()
     }
 
