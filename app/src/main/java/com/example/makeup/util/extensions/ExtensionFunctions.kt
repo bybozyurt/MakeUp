@@ -1,6 +1,5 @@
 package com.example.makeup.util.extensions
 
-import android.text.Layout
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -16,14 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.makeup.R
 import com.example.makeup.adapters.FavoriteProductsAdapter
-import com.example.makeup.data.database.ProductsEntity
+import com.example.makeup.data.database.entities.ProductsEntity
 import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.models.Products
 import com.example.makeup.models.ProductsItem
 import com.example.makeup.ui.fragments.products.ProductsFragmentDirections
 import com.example.makeup.util.NetworkResult
 import org.jsoup.Jsoup
-import org.w3c.dom.Text
 import java.lang.Exception
 
 fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>){

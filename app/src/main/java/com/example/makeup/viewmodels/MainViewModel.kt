@@ -6,7 +6,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.example.makeup.data.Repository
-import com.example.makeup.data.database.ProductsEntity
+import com.example.makeup.data.database.entities.ProductsEntity
 import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.models.Products
 import com.example.makeup.util.NetworkResult

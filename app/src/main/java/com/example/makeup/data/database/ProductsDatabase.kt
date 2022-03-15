@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.makeup.data.database.entities.FavoritesEntity
+import com.example.makeup.data.database.entities.ProductsEntity
 
 @Database(
     entities = [ProductsEntity::class, FavoritesEntity::class],

@@ -1,7 +1,7 @@
 package com.example.makeup.data
 
 import com.example.makeup.data.database.ProductsDao
-import com.example.makeup.data.database.ProductsEntity
+import com.example.makeup.data.database.entities.ProductsEntity
 import com.example.makeup.data.database.entities.FavoritesEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

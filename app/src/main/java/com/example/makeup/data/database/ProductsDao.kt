@@ -2,6 +2,7 @@ package com.example.makeup.data.database
 
 import androidx.room.*
 import com.example.makeup.data.database.entities.FavoritesEntity
+import com.example.makeup.data.database.entities.ProductsEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
