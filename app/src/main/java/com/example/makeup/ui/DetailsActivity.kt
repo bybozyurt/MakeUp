@@ -1,6 +1,5 @@
 package com.example.makeup.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -15,7 +14,7 @@ import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.databinding.ActivityDetailsBinding
 import com.example.makeup.ui.base.BaseBindingActivity
 import com.example.makeup.ui.colors.ColorsFragment
-import com.example.makeup.ui.instructions.WebsiteFragment
+import com.example.makeup.ui.website.WebsiteFragment
 import com.example.makeup.ui.overview.OverviewFragment
 import com.example.makeup.util.Constants.Companion.COLORS_FRAGMENT
 import com.example.makeup.util.Constants.Companion.DELETE_ICON
