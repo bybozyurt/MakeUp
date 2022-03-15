@@ -27,7 +27,7 @@ class MainViewModel @Inject constructor(
     val readProducts: LiveData<List<ProductsEntity>> = repository.local.readDatabase().asLiveData()
     val readFavoriteProducts: LiveData<List<FavoritesEntity>> =
         repository.local.readFavoriteProducts().asLiveData()
-    val readProducts2: LiveData<List<ProductsEntity>> = readProducts
+    //val readProducts2: LiveData<List<ProductsEntity>> = readProducts
 
     private fun insertProducts(productsEntity: ProductsEntity) =
         viewModelScope.launch(Dispatchers.IO) {
@@ -50,9 +50,9 @@ class MainViewModel @Inject constructor(
         }
 
     var productsResponse: MutableLiveData<NetworkResult<Products>> = MutableLiveData()
-    var productsResponse2: MutableLiveData<NetworkResult<Products>> = productsResponse
+    //var productsResponse2: MutableLiveData<NetworkResult<Products>> = productsResponse
 
-    val pairMediatorLiveData = PairMediatorLiveData(productsResponse2, readProducts2)
+    val pairMediatorLiveData = PairMediatorLiveData(productsResponse, readProducts)
 
     fun getProducts(queries: Map<String, String>) = viewModelScope.launch {
         getProductsSafeCall(queries)

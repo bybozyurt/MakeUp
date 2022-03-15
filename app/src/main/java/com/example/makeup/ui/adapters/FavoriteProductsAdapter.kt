@@ -168,7 +168,7 @@ class FavoriteProductsAdapter(
         if (menu?.itemId == R.id.delete_favorite_products_menu) {
             selectedProducts.forEach {
                 mainViewModel.deleteFavoriteProduct(it)
-                requireActivity.showCustomSnackBar(
+                rootView.context.applicationContext.showCustomSnackBar(
                     "${selectedProducts.size} item/s deleted",
                     rootView,
                     DELETE_ICON
