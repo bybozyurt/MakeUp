@@ -71,7 +71,6 @@ class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
         lifecycleScope.launch {
             mainViewModel.readProducts.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty() && !args.backFromBottomSheet) {
-                    Log.d("ProductsFragment", "readDatabase called!")
                     mAdapter.setData(database[0].products)
                     hideShimmerEffect()
                 } else {
