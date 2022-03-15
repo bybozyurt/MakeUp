@@ -11,75 +11,14 @@ import androidx.core.content.ContextCompat
 import com.example.makeup.R
 import com.example.makeup.databinding.FragmentOverviewBinding
 import com.example.makeup.data.models.ProductsItem
+import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
 import com.example.makeup.util.extensions.loadImageFromUrl
 import com.example.makeup.util.extensions.parseHtml
 
-class OverviewFragment : Fragment() {
+class OverviewFragment : BaseBindingFragment<FragmentOverviewBinding>() {
 
-    private var _binding: FragmentOverviewBinding? = null
-    private val binding get() = _binding!!
     private lateinit var productsItem: ProductsItem
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        _binding = FragmentOverviewBinding.inflate(inflater, container, false)
-        initBundle()
-        setupBinding()
-
-        with(productsItem.tagList!!) {
-            with(binding) {
-                with(resources) {
-                    updateColors(
-                        contains(getString(R.string.organic)),
-                        organicTextView,
-                        organicImageView
-                    )
-                    updateColors(
-                        contains(getString(R.string.vegan)),
-                        veganTextView,
-                        veganImageView
-                    )
-                    updateColors(
-                        contains(getString(R.string.canadian)),
-                        canadianFreeTextView,
-                        canadianFreeImageView
-                    )
-                    updateColors(
-                        contains(getString(R.string.gluten_free)),
-                        glutenFreeTextView,
-                        glutenFreeImageView
-                    )
-                    updateColors(
-                        contains(getString(R.string.natural)),
-                        natTextView,
-                        binding.natImageView
-                    )
-                    updateColors(
-                        contains(getString(R.string.cruelty_free_query)),
-                        crueltyFreeTextView,
-                        crueltyFreeImageView
-                    )
-                    updateColors(
-                        contains(getString(R.string.hypoallergenic)),
-                        hypoAllergenicTextView,
-                        hypoAllergenicImageView
-                    )
-                    updateColors(
-                        contains(getString(R.string.ewg_verified)),
-                        ewgTextView,
-                        ewgImageView
-                    )
-                }
-            }
-
-        }
-
-        return binding.root
-    }
 
     private fun initBundle() {
         val args = arguments
@@ -87,14 +26,14 @@ class OverviewFragment : Fragment() {
     }
 
     private fun setupBinding() {
-        with(binding) {
-            productsItem.imageLink?.let { mainImageView.loadImageFromUrl(it) }
-            titleTextView.text = productsItem.name
-            binding.descriptionTextView.parseHtml(productsItem.description)
+        mBinding?.let {
+            with(it) {
+                productsItem.imageLink?.let { mainImageView.loadImageFromUrl(it) }
+                titleTextView.text = productsItem.name
+                descriptionTextView.parseHtml(productsItem.description)
+            }
         }
-
     }
-
 
     private fun updateColors(stateIsOn: Boolean, textView: TextView, imageView: ImageView) {
         if (stateIsOn) {
@@ -107,9 +46,68 @@ class OverviewFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun initTagColors() {
+        with(productsItem.tagList!!) {
+            mBinding?.let {
+                with(it) {
+                    with(resources) {
+                        updateColors(
+                            contains(getString(R.string.organic)),
+                            organicTextView,
+                            organicImageView
+                        )
+                        updateColors(
+                            contains(getString(R.string.vegan)),
+                            veganTextView,
+                            veganImageView
+                        )
+                        updateColors(
+                            contains(getString(R.string.canadian)),
+                            canadianFreeTextView,
+                            canadianFreeImageView
+                        )
+                        updateColors(
+                            contains(getString(R.string.gluten_free)),
+                            glutenFreeTextView,
+                            glutenFreeImageView
+                        )
+                        updateColors(
+                            contains(getString(R.string.natural)),
+                            natTextView,
+                            natImageView
+                        )
+                        updateColors(
+                            contains(getString(R.string.cruelty_free_query)),
+                            crueltyFreeTextView,
+                            crueltyFreeImageView
+                        )
+                        updateColors(
+                            contains(getString(R.string.hypoallergenic)),
+                            hypoAllergenicTextView,
+                            hypoAllergenicImageView
+                        )
+                        updateColors(
+                            contains(getString(R.string.ewg_verified)),
+                            ewgTextView,
+                            ewgImageView
+                        )
+                    }
+                }
+            }
+
+        }
+    }
+
+    override fun getContentLayoutResId() = R.layout.fragment_overview
+
+    override fun populateUI() {
+        initBundle()
+        setupBinding()
+        initTagColors()
+    }
+
+    override fun onDestView() {
+        mBinding = null
     }
 
 
