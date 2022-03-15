@@ -1,8 +1,7 @@
 package com.example.makeup.data
 
 import com.example.makeup.data.network.ProductsApi
-import com.example.makeup.models.Products
-import com.example.makeup.models.ProductsItem
+import com.example.makeup.data.models.Products
 import retrofit2.Response
 import javax.inject.Inject
 

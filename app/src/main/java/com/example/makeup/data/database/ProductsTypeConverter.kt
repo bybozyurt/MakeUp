@@ -1,8 +1,8 @@
 package com.example.makeup.data.database
 
 import androidx.room.TypeConverter
-import com.example.makeup.models.Products
-import com.example.makeup.models.ProductsItem
+import com.example.makeup.data.models.Products
+import com.example.makeup.data.models.ProductsItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

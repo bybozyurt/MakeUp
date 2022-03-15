@@ -10,12 +10,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.example.makeup.R
-import com.example.makeup.adapters.PagerAdapter
+import com.example.makeup.ui.adapters.PagerAdapter
 import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.databinding.ActivityDetailsBinding
-import com.example.makeup.ui.fragments.colors.ColorsFragment
-import com.example.makeup.ui.fragments.instructions.WebsiteFragment
-import com.example.makeup.ui.fragments.overview.OverviewFragment
+import com.example.makeup.ui.colors.ColorsFragment
+import com.example.makeup.ui.instructions.WebsiteFragment
+import com.example.makeup.ui.overview.OverviewFragment
 import com.example.makeup.util.Constants.Companion.COLORS_FRAGMENT
 import com.example.makeup.util.Constants.Companion.DELETE_ICON
 import com.example.makeup.util.Constants.Companion.WEBSITE_FRAGMENT
@@ -23,7 +23,7 @@ import com.example.makeup.util.Constants.Companion.OVERVIEW_FRAGMENT
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
 import com.example.makeup.util.Constants.Companion.SAVE_ICON
 import com.example.makeup.util.extensions.showCustomSnackBar
-import com.example.makeup.viewmodels.MainViewModel
+import com.example.makeup.ui.viewmodels.MainViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception

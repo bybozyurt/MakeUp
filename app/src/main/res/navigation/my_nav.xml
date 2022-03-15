@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.example.makeup.ui.fragments.products.ProductsFragment"
+        android:name="com.example.makeup.ui.products.ProductsFragment"
         android:label="Products"
         tools:layout="@layout/fragment_products" >
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteProductsFragment"
-        android:name="com.example.makeup.ui.fragments.favorites.FavoriteProductsFragment"
+        android:name="com.example.makeup.ui.favorites.FavoriteProductsFragment"
         android:label="Favorites"
         tools:layout="@layout/fragment_favorite_products" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <dialog
         android:id="@+id/productBottomSheet"
-        android:name="com.example.makeup.ui.fragments.products.bottomsheet.ProductBottomSheet"
+        android:name="com.example.makeup.ui.products.bottomsheet.ProductBottomSheet"
         android:label="fragment_product_bottom_sheet"
         tools:layout="@layout/fragment_product_bottom_sheet" >
         <action
@@ -49,6 +49,6 @@
         tools:layout="@layout/activity_details" >
         <argument
             android:name="productsItem"
-            app:argType="com.example.makeup.models.ProductsItem"/>
+            app:argType="com.example.makeup.data.models.ProductsItem"/>
     </activity>
 </navigation>

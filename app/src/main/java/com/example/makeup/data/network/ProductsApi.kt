@@ -1,7 +1,6 @@
 package com.example.makeup.data.network
 
-import com.example.makeup.models.Products
-import com.example.makeup.models.ProductsItem
+import com.example.makeup.data.models.Products
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
