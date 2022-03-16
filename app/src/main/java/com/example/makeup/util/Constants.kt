@@ -1,9 +1,11 @@
 package com.example.makeup.util
 
+import com.example.makeup.BuildConfig
+
 class Constants {
 
     companion object {
-        const val BASE_URL = "http://makeup-api.herokuapp.com"
+        val BASE_URL = BuildConfig.API_BASE_URL
 
         //API QUERY
         const val QUERY_BRAND = "brand"

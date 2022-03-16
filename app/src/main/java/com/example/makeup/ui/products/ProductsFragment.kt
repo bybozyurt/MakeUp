@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.makeup.BuildConfig
 import com.example.makeup.util.extensions.toast
 import com.example.makeup.util.extensions.observeOnce
 import com.example.makeup.R
@@ -20,6 +21,7 @@ import com.example.makeup.util.NetworkResult
 import com.example.makeup.util.extensions.handleReadDataErrors
 import com.example.makeup.ui.viewmodels.MainViewModel
 import com.example.makeup.ui.viewmodels.ProductsViewModel
+import com.example.makeup.util.Constants.Companion.BASE_URL
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
