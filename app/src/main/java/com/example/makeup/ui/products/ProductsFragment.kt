@@ -135,7 +135,6 @@ class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext())
                 .collect { status ->
-                    Log.e("NetworkListener", status.toString())
                     with(productsViewModel) {
                         networkStatus = status
                         showNetworkStatus()

@@ -1,5 +1,6 @@
 package com.example.makeup.ui.adapters
 
+import android.content.Context
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,6 +28,7 @@ class FavoriteProductsAdapter(
     private var multiSelection = false
     private lateinit var mActionMode: ActionMode
     private lateinit var rootView: View
+    private lateinit var context: Context
     private var selectedProducts = arrayListOf<FavoritesEntity>()
     private var myViewHolders = arrayListOf<MyViewHolder>()
 
@@ -42,6 +44,7 @@ class FavoriteProductsAdapter(
             parent,
             false
         )
+        context = parent.context
 
         return MyViewHolder(binding)
     }
@@ -168,8 +171,8 @@ class FavoriteProductsAdapter(
         if (menu?.itemId == R.id.delete_favorite_products_menu) {
             selectedProducts.forEach {
                 mainViewModel.deleteFavoriteProduct(it)
-                rootView.context.applicationContext.showCustomSnackBar(
-                    "${selectedProducts.size} item/s deleted",
+                context.showCustomSnackBar(
+                    "${selectedProducts.size} item/s removed",
                     rootView,
                     DELETE_ICON
                 )
