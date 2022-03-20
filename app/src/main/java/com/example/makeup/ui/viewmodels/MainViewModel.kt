@@ -85,19 +85,19 @@ class MainViewModel @Inject constructor(
     }
 
     private fun handleProductsResponse(response: Response<Products>): NetworkResult<Products>? {
-        when {
+        return when {
             response.message().toString().contains("timeout") -> {
-                return NetworkResult.Error("Timeout")
+                NetworkResult.Error("Timeout")
             }
             response.body()!!.isNullOrEmpty() -> {
-                return NetworkResult.Error("Products Not Found")
+                NetworkResult.Error("Products Not Found")
             }
             response.isSuccessful -> {
                 val products = response.body()
-                return NetworkResult.Success(products!!)
+                NetworkResult.Success(products!!)
             }
             else -> {
-                return NetworkResult.Error(response.message())
+                NetworkResult.Error(response.message())
             }
         }
     }

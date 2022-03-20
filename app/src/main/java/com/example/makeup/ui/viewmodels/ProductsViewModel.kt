@@ -82,7 +82,7 @@ class ProductsViewModel @Inject constructor(
         return queries
     }
 
-    fun saveBackOnline(backOnline: Boolean) {
+    private fun saveBackOnline(backOnline: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveBackOnline(backOnline)
         }

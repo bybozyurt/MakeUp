@@ -27,8 +27,8 @@ class ColorsAdapter : RecyclerView.Adapter<ColorsAdapter.MyViewHolder>() {
 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        with(holder.binding){
-            with(colorList[position]){
+        with(holder.binding) {
+            with(colorList[position]) {
                 val hexValue = Color.parseColor(hexValue)
                 colorsName.text = colourName.toString()
                 colorsImageView.setBackgroundColor(hexValue)
