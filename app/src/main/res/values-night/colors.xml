@@ -34,7 +34,7 @@
     <color name="chipTextColor">@color/darkGray</color>
 
     //Custom CardView
-    <color name="strokeColor">@color/lightMediumGray</color>
+    <color name="strokeColor">@color/mediumGray</color>
     <color name="cardBackgroundColor">@color/darker</color>
     <color name="titleColor">@color/mediumGray</color>
     <color name="descriptionColor">@color/mediumGray</color>

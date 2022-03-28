@@ -94,7 +94,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
             imageView.setColorFilter(
                 ContextCompat.getColor(
                     rootView.context.applicationContext,
-                    R.color.darkGray
+                    R.color.darkerGray
                 )
             )
             textView.setTextColor(
