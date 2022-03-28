@@ -1,5 +1,19 @@
-# **MakeUp**
+# **MakeUp MVVM**
 [Google Play](https://play.google.com/store/apps/details?id=com.ab.makeup)
+
+## Libraries And Tools
+- Dagger - Hilt
+- Retrofit
+- Coroutine
+- Coil
+- Shimmer Effect
+- Room
+- Ahmet Button
+- Live Data
+- Jetpack Navigation
+
+
+## Outputs
 <p float="left">
  <img src="https://user-images.githubusercontent.com/51344498/156014735-0bf0b674-76c5-4f11-bd99-50aa4bb489ef.png" width="400" height="800" />
 <img src="https://user-images.githubusercontent.com/51344498/156014743-bae7834d-f113-482c-bd2a-0de43910afef.png" width="400" height="800" />
