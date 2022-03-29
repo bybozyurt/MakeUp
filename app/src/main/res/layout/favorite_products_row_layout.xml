@@ -19,13 +19,13 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/lightMediumGray"
+        app:strokeColor="@color/strokeColor"
         app:strokeWidth="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:background="@color/cardBackgroundColor">
 
             <ImageView
                 android:id="@+id/favorite_product_imageView"
@@ -48,7 +48,7 @@
                 android:fontFamily="@font/autour_one"
                 android:maxLines="3"
                 android:text="@string/lorem_ipsum"
-                android:textColor="@color/darker"
+                android:textColor="@color/titleColor"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
                 android:maxLines="3"
                 android:textSize="14sp"
                 android:text="@string/desc"
-                android:textColor="@color/darkGray"
+                android:textColor="@color/descriptionColor"
                 app:layout_constraintEnd_toEndOf="@+id/favorite_name_textView"
                 app:layout_constraintStart_toStartOf="@+id/favorite_name_textView"
                 app:layout_constraintTop_toBottomOf="@+id/favorite_name_textView" />
