@@ -28,6 +28,9 @@
     <color name="backgroundColor">@color/dark</color>
     <color name="placeholderColor">@color/darker</color>
     <color name="itemColor">@color/mediumGray</color>
+    <color name="snackBarBackgroundColor">@color/lightGray</color>
+    <color name="snackBarItemColor">@color/darkGray</color>
+
 
     //Custom Chip Style
     <color name="checkedChipBackgroundColor">@color/darker</color>
