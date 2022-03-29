@@ -215,13 +215,13 @@ class FavoriteProductsAdapter(
             imageView.setColorFilter(
                 ContextCompat.getColor(
                     rootView.context.applicationContext,
-                    R.color.darkerGray
+                    R.color.itemColor
                 )
             )
             textView.setTextColor(
                 ContextCompat.getColor(
                     rootView.context.applicationContext,
-                    R.color.darkGray
+                    R.color.itemColor
                 )
             )
         }

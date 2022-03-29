@@ -36,8 +36,8 @@ class OverviewFragment : BaseBindingFragment<FragmentOverviewBinding>() {
             imageView.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
             textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
         } else {
-            imageView.setColorFilter(ContextCompat.getColor(requireContext(), R.color.darkerGray))
-            textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.darkGray))
+            imageView.setColorFilter(ContextCompat.getColor(requireContext(), R.color.itemColor))
+            textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.itemColor))
         }
 
     }
