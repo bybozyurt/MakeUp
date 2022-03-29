@@ -4,7 +4,7 @@
     <item
         android:id="@+id/productsFragment"
         android:title="@string/products"
-        android:icon="@drawable/ic__makeup_"/>
+        android:icon="@drawable/ic_makeup"/>
 
     <item
         android:id="@+id/favoriteProductsFragment"

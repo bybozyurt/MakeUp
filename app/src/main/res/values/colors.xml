@@ -31,6 +31,7 @@
     <color name="itemColor">@color/darkGray</color>
     <color name="snackBarBackgroundColor">@color/dark</color>
     <color name="snackBarItemColor">@color/mediumGray</color>
+    <color name="errorBackgroundColor">@color/mediumGray</color>
 
     //Custom Chip Style
     <color name="checkedChipBackgroundColor">#206200EA</color>

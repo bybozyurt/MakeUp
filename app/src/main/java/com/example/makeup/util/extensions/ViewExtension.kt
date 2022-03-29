@@ -64,7 +64,7 @@ fun View.handleReadDataErrors(
 fun ImageView.loadImageFromUrl(imageUrl: String){
     this.load(imageUrl){
         crossfade(600)
-        error(R.drawable.ic_sad)
+        error(R.drawable.ic_terrain)
     }
 }
 

@@ -30,6 +30,7 @@
     <color name="itemColor">@color/mediumGray</color>
     <color name="snackBarBackgroundColor">@color/lightGray</color>
     <color name="snackBarItemColor">@color/darkGray</color>
+    <color name="errorBackgroundColor">@color/dark</color>
 
 
     //Custom Chip Style
