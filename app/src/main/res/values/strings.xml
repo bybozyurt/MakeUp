@@ -60,5 +60,6 @@
     <string name="icon_save">save</string>
     <string name="remove_from_favorites">Removed from Favorites.</string>
     <string name="product_saved">Product saved.</string>
+    <string name="tags">Tags</string>
 
 </resources>

@@ -4,4 +4,5 @@
     <item android:color="@color/checkedChipBackgroundColor" android:state_checked="true"/>
     <item android:color="@color/chipBackgroundColor" android:state_checked="false"/>
 
+
 </selector>

@@ -28,10 +28,10 @@
     <color name="backgroundColor">@color/dark</color>
 
     //Custom Chip Style
-    <color name="checkedChipBackgroundColor">#206200EA</color>
-    <color name="chipBackgroundColor">@color/lightGray</color>
-    <color name="checkedChipTextColor">@color/pink</color>
-    <color name="chipTextColor">@color/darkGray</color>
+    <color name="checkedChipBackgroundColor">@color/darker</color>
+    <color name="chipBackgroundColor">@color/dark</color>
+    <color name="checkedChipTextColor">@color/lightGray</color>
+    <color name="chipTextColor">@color/lightGray</color>
 
     //Custom CardView
     <color name="strokeColor">@color/mediumGray</color>
@@ -49,6 +49,12 @@
     <color name="bottomNavBackground">@color/darker</color>
     <color name="bottomNavItemColor">@color/mediumGray</color>
     <color name="bottomNavCheckedItemColor">@color/colorAccent</color>
+
+    //Switch
+    <color name="switchBackgroundColor">@color/yellow</color>
+
+    //Button
+    <color name="buttonBackgroundColor">@color/yellow</color>
 
 
 

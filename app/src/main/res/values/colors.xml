@@ -41,6 +41,7 @@
     <color name="descriptionColor">@color/darkGray</color>
     <color name="cardBackgroundLightColor">#106200EA</color>
 
+    //ContextualActionBar
     <color name="actionBarBackgroundColor">@color/colorPrimary</color>
     <color name="statusBarColor">@color/colorPrimaryDark</color>
     <color name="contextualStatusBarColor">@color/darker</color>
@@ -50,6 +51,12 @@
     <color name="bottomNavBackground">@color/white</color>
     <color name="bottomNavItemColor">@color/darkGray</color>
     <color name="bottomNavCheckedItemColor">@color/colorPrimary</color>
+
+    //Switch
+    <color name="switchBackgroundColor">@color/colorAccent</color>
+
+    //Button
+    <color name="buttonBackgroundColor">@color/colorAccent</color>
 
 
 

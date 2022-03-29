@@ -58,7 +58,7 @@
     </style>
 
     <style name="SwitchCompatTheme" >
-        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/switchBackgroundColor</item>
     </style>
     
     <style name="CustomBottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
