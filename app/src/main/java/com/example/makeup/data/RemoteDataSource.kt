@@ -12,5 +12,4 @@ class RemoteDataSource @Inject constructor(private val productsApi: ProductsApi)
     }
 
 
-
 }
