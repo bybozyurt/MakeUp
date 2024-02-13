@@ -4,8 +4,8 @@ package com.example.makeup.ui.overview
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.example.makeup.R
-import com.example.makeup.databinding.FragmentOverviewBinding
+import com.ab.makeup.R
+import com.ab.makeup.databinding.FragmentOverviewBinding
 import com.example.makeup.data.models.ProductsItem
 import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
@@ -105,6 +105,4 @@ class OverviewFragment : BaseBindingFragment<FragmentOverviewBinding>() {
     override fun onDestView() {
         mBinding = null
     }
-
-
 }

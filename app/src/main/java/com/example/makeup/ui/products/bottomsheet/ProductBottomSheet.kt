@@ -8,22 +8,19 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
-import com.example.makeup.R
-import com.example.makeup.databinding.FragmentProductBottomSheetBinding
+import com.ab.makeup.R
+import com.ab.makeup.databinding.FragmentProductBottomSheetBinding
 import com.example.makeup.util.Constants.Companion.DEFAULT_BRAND
 import com.example.makeup.util.Constants.Companion.DEFAULT_CATEGORY
 import com.example.makeup.util.Constants.Companion.DEFAULT_TAGS
-import com.example.makeup.util.extensions.gone
-import com.example.makeup.util.extensions.show
 import com.example.makeup.ui.viewmodels.ProductsViewModel
+import com.example.makeup.util.extensions.showIf
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import java.util.*
 
-
 class ProductBottomSheet : BottomSheetDialogFragment() {
-
 
     private lateinit var productViewModel: ProductsViewModel
 
@@ -49,7 +46,6 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentProductBottomSheetBinding.inflate(inflater, container, false)
         readBrandAndCategoryObserve()
         brandChipGroupListener()
@@ -58,34 +54,23 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
         applyButtonListener()
         onlyTagsSwitch()
 
-
-
-
         return binding.root
     }
 
     private fun onlyTagsSwitch() {
         binding.onlyTagsSwitch.setOnCheckedChangeListener { _, isChecked ->
             isCheckedControl = isChecked
-            if (isCheckedControl) {
-                binding.categoryTxt.gone()
-                binding.categoryChipGroup.gone()
-                binding.brandTxt.gone()
-                binding.brandChipGroup.gone()
-                binding.tagsTxt.show()
-                binding.tagsChipGroup.show()
-            } else {
-                binding.tagsChipGroup.gone()
-                binding.tagsTxt.gone()
-                binding.categoryTxt.show()
-                binding.categoryChipGroup.show()
-                binding.brandTxt.show()
-                binding.brandChipGroup.show()
-
+            with(binding) {
+                categoryTxt.showIf(!isCheckedControl)
+                categoryChipGroup.showIf(!isCheckedControl)
+                brandTxt.showIf(!isCheckedControl)
+                brandChipGroup.showIf(!isCheckedControl)
+                categoryTxt.showIf(!isCheckedControl)
+                tagsTxt.showIf(isCheckedControl)
+                tagsChipGroup.showIf(isCheckedControl)
             }
         }
     }
-
 
     private fun updateChip(chipId: Int, chipGroup: ChipGroup) {
         if (chipId != 0) {
@@ -163,6 +148,4 @@ class ProductBottomSheet : BottomSheetDialogFragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

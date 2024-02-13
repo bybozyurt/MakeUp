@@ -3,27 +3,23 @@ package com.example.makeup.ui.products
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.makeup.BuildConfig
+import com.ab.makeup.R
+import com.ab.makeup.databinding.FragmentProductsBinding
 import com.example.makeup.util.extensions.toast
 import com.example.makeup.util.extensions.observeOnce
-import com.example.makeup.R
 import com.example.makeup.ui.adapters.ProductsAdapter
-import com.example.makeup.databinding.FragmentProductsBinding
 import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.NetworkListener
 import com.example.makeup.util.NetworkResult
 import com.example.makeup.util.extensions.handleReadDataErrors
 import com.example.makeup.ui.viewmodels.MainViewModel
 import com.example.makeup.ui.viewmodels.ProductsViewModel
-import com.example.makeup.util.Constants.Companion.BASE_URL
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -52,7 +48,6 @@ class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
                     errorTextView.handleReadDataErrors(productsResponse, readProducts)
                 }
             }
-
         }
     }
 
@@ -81,7 +76,6 @@ class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
             }
         }
     }
-
 
     private fun requestApiData() {
         with(mainViewModel) {
@@ -150,7 +144,6 @@ class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
                 backOnline = it
             }
         }
-
     }
 
     private fun showShimmerEffect() {
@@ -160,7 +153,6 @@ class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
     private fun hideShimmerEffect() {
         mBinding?.recyclerview?.hideShimmer()
     }
-
 
     override fun getContentLayoutResId() = R.layout.fragment_products
 
@@ -176,6 +168,5 @@ class ProductsFragment : BaseBindingFragment<FragmentProductsBinding>() {
     override fun onDestView() {
         mBinding = null
     }
-
 
 }

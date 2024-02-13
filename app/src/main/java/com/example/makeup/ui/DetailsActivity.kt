@@ -8,10 +8,10 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
-import com.example.makeup.R
+import com.ab.makeup.R
+import com.ab.makeup.databinding.ActivityDetailsBinding
 import com.example.makeup.ui.adapters.PagerAdapter
 import com.example.makeup.data.database.entities.FavoritesEntity
-import com.example.makeup.databinding.ActivityDetailsBinding
 import com.example.makeup.ui.base.BaseBindingActivity
 import com.example.makeup.ui.colors.ColorsFragment
 import com.example.makeup.ui.website.WebsiteFragment
@@ -54,7 +54,6 @@ class DetailsActivity : BaseBindingActivity<ActivityDetailsBinding>() {
         with(fragments) {
             add(OverviewFragment())
             add(ColorsFragment())
-            add(WebsiteFragment())
         }
 
         val titles = ArrayList<String>()
@@ -116,7 +115,7 @@ class DetailsActivity : BaseBindingActivity<ActivityDetailsBinding>() {
     }
 
     private fun changeMenuItemColor(item: MenuItem, color: Int) {
-        item.icon.setTint(ContextCompat.getColor(this, color))
+        item.icon?.setTint(ContextCompat.getColor(this, color))
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

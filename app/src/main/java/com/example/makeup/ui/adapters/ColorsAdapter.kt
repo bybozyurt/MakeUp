@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.makeup.databinding.ColorsRowLayoutBinding
+import com.ab.makeup.databinding.ColorsRowLayoutBinding
 import com.example.makeup.data.models.ProductColor
 import com.example.makeup.util.ProductsDiffUtil
 

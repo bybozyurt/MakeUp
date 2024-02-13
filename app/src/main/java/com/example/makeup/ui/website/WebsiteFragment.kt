@@ -1,8 +1,8 @@
 package com.example.makeup.ui.website
 
 import android.webkit.WebViewClient
-import com.example.makeup.R
-import com.example.makeup.databinding.FragmentWebsiteBinding
+import com.ab.makeup.R
+import com.ab.makeup.databinding.FragmentWebsiteBinding
 import com.example.makeup.data.models.ProductsItem
 import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
@@ -36,6 +36,5 @@ class WebsiteFragment : BaseBindingFragment<FragmentWebsiteBinding>() {
     override fun onDestView() {
         mBinding = null
     }
-
 
 }

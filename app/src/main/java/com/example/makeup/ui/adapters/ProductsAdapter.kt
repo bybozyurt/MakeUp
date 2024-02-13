@@ -8,8 +8,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.makeup.R
-import com.example.makeup.databinding.ProductsRowLayoutBinding
+import com.ab.makeup.R
+import com.ab.makeup.databinding.ProductsRowLayoutBinding
 import com.example.makeup.data.models.Products
 import com.example.makeup.data.models.ProductsItem
 import com.example.makeup.util.ProductsDiffUtil
@@ -24,17 +24,14 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
     class MyViewHolder(val binding: ProductsRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-
         val binding = ProductsRowLayoutBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-
         return MyViewHolder(binding)
     }
 
@@ -106,6 +103,5 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
         }
 
     }
-
 
 }

@@ -1,9 +1,9 @@
 package com.example.makeup.ui.colors
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.makeup.R
+import com.ab.makeup.R
+import com.ab.makeup.databinding.FragmentColorsBinding
 import com.example.makeup.ui.adapters.ColorsAdapter
-import com.example.makeup.databinding.FragmentColorsBinding
 import com.example.makeup.data.models.ProductsItem
 import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.Constants.Companion.PRODUCTS_BUNDLE_KEY
@@ -29,7 +29,6 @@ class ColorsFragment : BaseBindingFragment<FragmentColorsBinding>() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
-
     }
 
     private fun initBundle() {
@@ -37,7 +36,7 @@ class ColorsFragment : BaseBindingFragment<FragmentColorsBinding>() {
         productsItem = args?.getParcelable(PRODUCTS_BUNDLE_KEY)
         productsItem?.productColors?.let {
             mAdapter.setData(it)
-            if (it.isNullOrEmpty()) {
+            if (it.isEmpty()) {
                 mBinding?.apply {
                     errorImageView.show()
                     errorTextView.show()
@@ -49,6 +48,5 @@ class ColorsFragment : BaseBindingFragment<FragmentColorsBinding>() {
     override fun onDestView() {
         mBinding = null
     }
-
 
 }

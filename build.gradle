@@ -5,10 +5,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.4"
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30'
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:2.38.1"
+        classpath "com.android.tools.build:gradle:8.2.2"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.48"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -17,4 +17,15 @@ buildscript {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'org.jetbrains.kotlin') {
+            details.useVersion Versions.kotlinVersion
+        } else if (requested.group == 'com.android.support') {
+            details.useVersion Versions.appCompatVersion
+        }
+    }
 }

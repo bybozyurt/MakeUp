@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
-import com.example.makeup.R
-import com.example.makeup.databinding.CustomSnackbarBinding
+import com.ab.makeup.R
+import com.ab.makeup.databinding.CustomSnackbarBinding
 import com.example.makeup.util.Constants
 import com.google.android.material.snackbar.Snackbar
 

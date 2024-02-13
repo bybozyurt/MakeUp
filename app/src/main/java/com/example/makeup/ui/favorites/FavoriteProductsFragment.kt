@@ -3,9 +3,9 @@ package com.example.makeup.ui.favorites
 import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.makeup.R
+import com.ab.makeup.R
+import com.ab.makeup.databinding.FragmentFavoriteProductsBinding
 import com.example.makeup.ui.adapters.FavoriteProductsAdapter
-import com.example.makeup.databinding.FragmentFavoriteProductsBinding
 import com.example.makeup.ui.base.BaseBindingFragment
 import com.example.makeup.util.extensions.setVisibility
 import com.example.makeup.util.extensions.showCustomSnackBar
@@ -37,7 +37,6 @@ class FavoriteProductsFragment : BaseBindingFragment<FragmentFavoriteProductsBin
             )
         }
         return super.onOptionsItemSelected(item)
-
     }
 
     private fun setupRecyclerView() {
@@ -48,7 +47,6 @@ class FavoriteProductsFragment : BaseBindingFragment<FragmentFavoriteProductsBin
                 itemAnimator = null
             }
         }
-
     }
 
     fun readFavoriteProductsObserve() {
@@ -75,6 +73,4 @@ class FavoriteProductsFragment : BaseBindingFragment<FragmentFavoriteProductsBin
         mBinding = null
         mAdapter.clearContextualActionMode()
     }
-
-
 }

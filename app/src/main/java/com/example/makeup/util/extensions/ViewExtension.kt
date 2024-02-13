@@ -10,7 +10,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.example.makeup.R
+import com.ab.makeup.R
 import com.example.makeup.data.database.entities.FavoritesEntity
 import com.example.makeup.data.database.entities.ProductsEntity
 import com.example.makeup.data.models.Products
@@ -31,6 +31,10 @@ fun View.hide() {
 
 fun View.gone() {
     this.visibility = View.GONE
+}
+
+fun View.showIf(condition: Boolean) {
+    this.visibility = if (condition) View.VISIBLE else View.GONE
 }
 
 fun View.setVisibility(favoritesEntity: List<FavoritesEntity>?, mAdapter: FavoriteProductsAdapter?){

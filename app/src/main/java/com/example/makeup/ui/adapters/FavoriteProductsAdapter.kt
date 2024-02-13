@@ -9,9 +9,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.makeup.R
+import com.ab.makeup.R
+import com.ab.makeup.databinding.FavoriteProductsRowLayoutBinding
 import com.example.makeup.data.database.entities.FavoritesEntity
-import com.example.makeup.databinding.FavoriteProductsRowLayoutBinding
 import com.example.makeup.ui.favorites.FavoriteProductsFragmentDirections
 import com.example.makeup.util.Constants.Companion.DELETE_ICON
 import com.example.makeup.util.ProductsDiffUtil

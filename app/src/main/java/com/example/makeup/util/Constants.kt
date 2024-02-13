@@ -1,6 +1,6 @@
 package com.example.makeup.util
 
-import com.example.makeup.BuildConfig
+import com.ab.makeup.BuildConfig
 
 class Constants {
 
@@ -39,9 +39,6 @@ class Constants {
 
         const val DELETE_ICON = "delete"
         const val SAVE_ICON = "save"
-
-
     }
-
 
 }
